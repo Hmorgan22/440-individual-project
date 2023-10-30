@@ -17,6 +17,9 @@ namespace CSC440_GroupProject
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new HomePageForm());
+               
+
+
         }
     }
 }
