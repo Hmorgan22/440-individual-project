@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.IO;
-
+using MySql.Data.MySqlClient;
 
 namespace CSC440_GroupProject
 {
@@ -77,26 +77,33 @@ namespace CSC440_GroupProject
         {
             var files = Directory.GetFiles(folderPath, "*.xlsx");
 
-            using (var connection = new SqlConnection("YourDatabaseConnectionString"))
+            //using (var connection = new SqlConnection("server=csitmariadb.eku.edu;user=student;database=csc340;port=3306;password=Maroon@21?;"))
+            string connStr = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
+
+            MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
+
+
             {
-                connection.Open();
+                conn.Open();
 
                 foreach (var file in files)
                 {
-                    string connectionString = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={file};Extended Properties=Excel 12.0";
+                    string con =
+                    @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\16156\Desktop\Grades 2023 Fall.xls;" +
+                    @"Extended Properties='Excel 8.0;HDR=Yes;'";
 
-                    using (var excelConnection = new OleDbConnection(connectionString))
+                    using (var excelConnection = new OleDbConnection(con))
                     {
                         excelConnection.Open();
-                        var command = new OleDbCommand("SELECT * FROM [Sheet1$]", excelConnection);
+                        var command = new OleDbCommand("SELECT * FROM [sheet1$]", excelConnection);
                         var reader = command.ExecuteReader();
 
                         while (reader.Read())
                         {
                             var name = reader["Name"].ToString();
-                            if (!StudentExists(connection, name))
+                            if (!StudentExists(conn, name))
                             {
-                                var insertCommand = new SqlCommand("INSERT INTO Students (Name, Address, GPA) VALUES (@Name, @Address, @GPA)", connection);
+                                var insertCommand = new MySqlCommand("INSERT INTO Students (Name, Address, GPA) VALUES (@Name, @Address, @GPA)", conn);
                                 insertCommand.Parameters.AddWithValue("@Name", name);
                                 insertCommand.Parameters.AddWithValue("@Address", reader["Address"].ToString());
                                 insertCommand.Parameters.AddWithValue("@GPA", Convert.ToDouble(reader["GPA"]));
@@ -108,10 +115,10 @@ namespace CSC440_GroupProject
             }
         }
 
-        private bool StudentExists(SqlConnection connection, string name)
+        private bool StudentExists(MySqlConnection connection, string name)
         {
             var query = "SELECT COUNT(*) FROM Students WHERE Name = @Name";
-            var command = new SqlCommand(query, connection);
+            var command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@Name", name);
 
             int count = (int)command.ExecuteScalar();
