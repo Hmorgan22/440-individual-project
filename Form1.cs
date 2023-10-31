@@ -11,6 +11,7 @@ using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.IO;
 using MySql.Data.MySqlClient;
+using ExcelDataReader;
 
 namespace CSC440_GroupProject
 {
@@ -76,41 +77,69 @@ namespace CSC440_GroupProject
         //Method used to import student data from the excel file.
         public void ImportStudentDataFromExcel(string folderPath)
         {
-            var files = Directory.GetFiles(folderPath, "*.xlsx");
+            // Get a list of all Excel files in the specified folder.
+            string[] excelFiles = Directory.GetFiles(folderPath, "*.xls*");
 
-            string connStr = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
-
-            MySqlConnection conn = new MySqlConnection(connStr);
-
-
+            if (excelFiles.Length == 0)
             {
-                conn.Open();
+                MessageBox.Show("No Excel files found in the selected folder.");
+                return;
+            }
 
-                foreach (var file in files)
+            // Define your SQL Server connection string.
+            string connectionString = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                foreach (string excelFile in excelFiles)
                 {
-                    string con =
-                    @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source="+ file +
-                    @";Extended Properties='Excel 8.0;HDR=Yes;'";
-
-                    using (var excelConnection = new OleDbConnection(con))
+                    using (FileStream stream = File.Open(excelFile, FileMode.Open, FileAccess.Read))
                     {
-                        excelConnection.Open();
-                        var command = new OleDbCommand("SELECT * FROM [Sheet1$]", excelConnection);
-                        var reader = command.ExecuteReader();
+                        IExcelDataReader reader;
 
-                        while (reader.Read())
+                        if (Path.GetExtension(excelFile) == ".xls")
                         {
-                            var name = reader["Name"].ToString();
-                            if (!StudentExists(conn, name))
+                            reader = ExcelReaderFactory.CreateBinaryReader(stream);
+                        }
+                        else if (Path.GetExtension(excelFile) == ".xlsx")
+                        {
+                            reader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+                        }
+                        else
+                        {
+                            // Handle unsupported file format or display an error message.
+                            MessageBox.Show($"Unsupported file format for {excelFile}");
+                            continue;
+                        }
+
+                        DataSet result = reader.AsDataSet();
+
+                        // Process the data and insert names into the database.
+                        DataTable table = result.Tables[0]; // Assuming the data is in the first table of the DataSet.
+
+                        foreach (DataRow row in table.Rows)
+                        {
+                            string name = row["name"].ToString(); // Replace "NameColumn" with the actual column name in your Excel file.
+
+                            // Insert the name into the database.
+                            string insertQuery = "INSERT INTO Students (name) VALUES (@name)";
+                            using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
                             {
-                                var insertCommand = new MySqlCommand("INSERT INTO Students (Name) VALUES (@Name)", conn);
-                                insertCommand.Parameters.AddWithValue("@Name", name);
-                                insertCommand.ExecuteNonQuery();
+                                command.Parameters.AddWithValue("@name", name);
+                                command.ExecuteNonQuery();
                             }
                         }
+
+                        reader.Close();
                     }
                 }
+
+                connection.Close();
             }
+
+            MessageBox.Show($"Processed and inserted names from {excelFiles.Length} Excel files into the database.");
         }
 
         //Method used to see if the student exists in the database by checking if the name returns a count.
@@ -175,7 +204,7 @@ namespace CSC440_GroupProject
 
         private void button1_Click(object sender, EventArgs e)
         {
-            UploadExcelPanel.Visible = false;          
+            UploadExcelPanel.Visible = false;
         }
     }
 }
