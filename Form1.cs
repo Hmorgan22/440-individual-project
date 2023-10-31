@@ -121,15 +121,17 @@ namespace CSC440_GroupProject
 
                         foreach (DataRow row in table.Rows)
                         {
-                            string name = row["name"].ToString(); // Replace "NameColumn" with the actual column name in your Excel file.
+                            string name = row[0].ToString(); // Replace "NameColumn" with the actual column name in your Excel file.
+                            string course = row[1].ToString(); 
+                            string year = row[2].ToString();
 
                             // Insert the name into the database.
-                            string insertQuery = "INSERT INTO Students (name) VALUES (@name)";
-                            using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
-                            {
-                                command.Parameters.AddWithValue("@name", name);
-                                command.ExecuteNonQuery();
-                            }
+                            //string insertQuery = "INSERT INTO Students (name) VALUES (@name)";
+                            //using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
+                            //{
+                            //    command.Parameters.AddWithValue("@name", name);
+                            //    command.ExecuteNonQuery();
+                            //}
                         }
 
                         reader.Close();
