@@ -122,8 +122,8 @@ namespace CSC440_GroupProject
                         foreach (DataRow row in table.Rows)
                         {
                             string excelName = row[0].ToString(); // Replace "NameColumn" with the actual column name in your Excel file.
-                            string course = row[1].ToString(); 
-                            string year = row[2].ToString();
+                            string excelId = row[1].ToString(); 
+                            string excelGrade = row[2].ToString();
 
                             //if (!StudentExists(connection, excelName))
                             //{
