@@ -95,7 +95,7 @@ namespace CSC440_GroupProject
                     using (var excelConnection = new OleDbConnection(con))
                     {
                         excelConnection.Open();
-                        var command = new OleDbCommand("SELECT * FROM [sheet1$]", excelConnection);
+                        var command = new OleDbCommand("SELECT * FROM [Sheet1$]", excelConnection);
                         var reader = command.ExecuteReader();
 
                         while (reader.Read())
