@@ -105,8 +105,6 @@ namespace CSC440_GroupProject
                             {
                                 var insertCommand = new MySqlCommand("INSERT INTO Students (Name) VALUES (@Name)", conn);
                                 insertCommand.Parameters.AddWithValue("@Name", name);
-                               // insertCommand.Parameters.AddWithValue("@Address", reader["Address"].ToString());
-                               //insertCommand.Parameters.AddWithValue("@GPA", Convert.ToDouble(reader["GPA"]));
                                 insertCommand.ExecuteNonQuery();
                             }
                         }
