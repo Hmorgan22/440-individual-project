@@ -77,10 +77,9 @@ namespace CSC440_GroupProject
         {
             var files = Directory.GetFiles(folderPath, "*.xlsx");
 
-            //using (var connection = new SqlConnection("server=csitmariadb.eku.edu;user=student;database=csc340;port=3306;password=Maroon@21?;"))
             string connStr = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
 
-            MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
+            MySqlConnection conn = new MySqlConnection(connStr);
 
 
             {
@@ -89,8 +88,8 @@ namespace CSC440_GroupProject
                 foreach (var file in files)
                 {
                     string con =
-                    @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\16156\Desktop\Grades 2023 Fall.xls;" +
-                    @"Extended Properties='Excel 8.0;HDR=Yes;'";
+                    @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source="+ file +
+                    @";Extended Properties='Excel 8.0;HDR=Yes;'";
 
                     using (var excelConnection = new OleDbConnection(con))
                     {
@@ -103,10 +102,10 @@ namespace CSC440_GroupProject
                             var name = reader["Name"].ToString();
                             if (!StudentExists(conn, name))
                             {
-                                var insertCommand = new MySqlCommand("INSERT INTO Students (Name, Address, GPA) VALUES (@Name, @Address, @GPA)", conn);
+                                var insertCommand = new MySqlCommand("INSERT INTO Students (Name) VALUES (@Name)", conn);
                                 insertCommand.Parameters.AddWithValue("@Name", name);
-                                insertCommand.Parameters.AddWithValue("@Address", reader["Address"].ToString());
-                                insertCommand.Parameters.AddWithValue("@GPA", Convert.ToDouble(reader["GPA"]));
+                               // insertCommand.Parameters.AddWithValue("@Address", reader["Address"].ToString());
+                               //insertCommand.Parameters.AddWithValue("@GPA", Convert.ToDouble(reader["GPA"]));
                                 insertCommand.ExecuteNonQuery();
                             }
                         }
