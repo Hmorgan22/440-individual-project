@@ -73,6 +73,7 @@ namespace CSC440_GroupProject
             UploadExcelPanel.Visible = true;
         }
 
+        //Method used to import student data from the excel file.
         public void ImportStudentDataFromExcel(string folderPath)
         {
             var files = Directory.GetFiles(folderPath, "*.xlsx");
@@ -114,6 +115,7 @@ namespace CSC440_GroupProject
             }
         }
 
+        //Method used to see if the student exists in the database by checking if the name returns a count.
         private bool StudentExists(MySqlConnection connection, string name)
         {
             var query = "SELECT COUNT(*) FROM Students WHERE Name = @Name";
@@ -152,12 +154,25 @@ namespace CSC440_GroupProject
 
         private void button2_Click_2(object sender, EventArgs e)
         {
-            string x = filePathTextBox.Text;
-            Console.WriteLine(x);
 
-            ImportStudentDataFromExcel(x);
+            string path = filePathTextBox.Text;
+            Console.WriteLine(path);
+            ImportStudentDataFromExcel(path);
 
-           // MessageBox.Show("File Path Does Not Exist", "Excel Upload Message");
+            //******************* USE THIS INSTEAD OF THE TOP LINE ONCE CODE IS DONE TESTING **********************
+            //try
+            //{
+            //    string path = filePathTextBox.Text;
+            //    Console.WriteLine(path);
+            //    ImportStudentDataFromExcel(path);
+            //}catch(Exception ex)
+            //{
+
+            //    MessageBox.Show("File Path Does Not Exist", "Excel Upload Message");
+            //    filePathTextBox.Text = "";
+            //    UploadExcelPanel.Visible = false;
+
+            //}
         }
 
         private void button1_Click(object sender, EventArgs e)
