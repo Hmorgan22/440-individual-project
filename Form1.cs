@@ -56,7 +56,7 @@ namespace CSC440_GroupProject
                     string year = addYearText.Text;
                     string semester = addSemesterText.Text;
 
-                    if (!StudentExists(connection, Name))
+                    if (!StudentExists(connection, Id))
                     {
                         //Insert the name and ID  into the student table.
                         string insertQuery = "INSERT INTO 440_hunter_student (Name, StudentId) VALUES (@Name, @Id)";
@@ -66,7 +66,10 @@ namespace CSC440_GroupProject
                             command.Parameters.AddWithValue("@Id", Id);
                             command.ExecuteNonQuery();
                         }
+                    }
 
+                    if (!GradeExists(connection, Id, Prefix, Number, year, semester))
+                    {
                         //Insert the Id, prefix, course num, grade, year, semester into the database.
                         string insertQueryGrades = "INSERT INTO 440_hunter_student_grades (StudentId, CoursePrefix, CourseNum, Grade, Year, Semester) VALUES (@Id, @Prefix, @Num, @Grade, @Year, @Semester)";
                         using (MySqlCommand command = new MySqlCommand(insertQueryGrades, connection))
@@ -79,7 +82,10 @@ namespace CSC440_GroupProject
                             command.Parameters.AddWithValue("@Semester", semester);
                             command.ExecuteNonQuery();
                         }
+                    }
 
+                    if (!CourseExists(connection, Prefix, Number, year, semester))
+                    {
                         //Insert the prefix, course num, year, semester, hours into the database.
                         string insertQueryHours = "INSERT INTO 440_hunter_course_credit_hours (CoursePrefix, CourseNum, Year, Semester) VALUES (@Prefix, @Num, @Year, @Semester)";
                         using (MySqlCommand command = new MySqlCommand(insertQueryHours, connection))
@@ -98,7 +104,7 @@ namespace CSC440_GroupProject
                     MessageBox.Show("Student grade added succesffully.");
                     addNameText.Text = "";
                     addIdText.Text = "";
-                    addGradeText.Text= "";
+                    addGradeText.Text = "";
                     addPrefixText.Text = "";
                     addNumText.Text = "";
                     addYearText.Text = "";
@@ -226,9 +232,10 @@ namespace CSC440_GroupProject
                                     }
                                 }
 
-                                if (!StudentExists(connection, excelName))
+
+                                try
                                 {
-                                    try
+                                    if (!StudentExists(connection, excelId))
                                     {
                                         //Insert the name and ID  into the student table.
                                         string insertQuery = "INSERT INTO 440_hunter_student (Name, StudentId) VALUES (@Name, @Id)";
@@ -238,7 +245,10 @@ namespace CSC440_GroupProject
                                             command.Parameters.AddWithValue("@Id", excelId);
                                             command.ExecuteNonQuery();
                                         }
+                                    }
 
+                                    if (!GradeExists(connection, excelId, coursePrefix, courseNumber, year, semester))
+                                    {
                                         //Insert the Id, prefix, course num, grade, year, semester into the database.
                                         string insertQueryGrades = "INSERT INTO 440_hunter_student_grades (StudentId, CoursePrefix, CourseNum, Grade, Year, Semester) VALUES (@Id, @Prefix, @Num, @Grade, @Year, @Semester)";
                                         using (MySqlCommand command = new MySqlCommand(insertQueryGrades, connection))
@@ -251,7 +261,10 @@ namespace CSC440_GroupProject
                                             command.Parameters.AddWithValue("@Semester", semester);
                                             command.ExecuteNonQuery();
                                         }
+                                    }
 
+                                    if (!CourseExists(connection, coursePrefix, courseNumber, year, semester))
+                                    {
                                         //Insert the prefix, course num, year, semester, hours into the database.
                                         string insertQueryHours = "INSERT INTO 440_hunter_course_credit_hours (CoursePrefix, CourseNum, Year, Semester) VALUES (@Prefix, @Num, @Year, @Semester)";
                                         using (MySqlCommand command = new MySqlCommand(insertQueryHours, connection))
@@ -263,12 +276,13 @@ namespace CSC440_GroupProject
                                             command.ExecuteNonQuery();
                                         }
                                     }
-                                    catch (Exception ex)
-                                    {
-                                        MessageBox.Show("Unable to add student to database");
-                                    }
-
                                 }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show("Unable to add student to database");
+                                }
+
+
                             }
                             catch (Exception ex)
                             {
@@ -287,11 +301,56 @@ namespace CSC440_GroupProject
         }
 
         //Method used to see if the student exists in the database by checking if the name returns a count.
-        static bool StudentExists(MySqlConnection connection, string name)
+        static bool StudentExists(MySqlConnection connection, string Id)
         {
-            var query = "SELECT COUNT(*) FROM 440_hunter_student WHERE Name = @Name";
+            var query = "SELECT COUNT(*) FROM 440_hunter_student WHERE StudentId = @Id";
             var command = new MySqlCommand(query, connection);
-            command.Parameters.AddWithValue("@Name", name);
+            command.Parameters.AddWithValue("@Id", Id);
+
+            object result = command.ExecuteScalar();
+
+            if (result != null && int.TryParse(result.ToString(), out int count))
+            {
+                return count > 0;
+            }
+
+            return false;
+        }
+
+        //method to check if a grade record already exists in the DB
+        static bool GradeExists(MySqlConnection connection, string studentId, string coursePrefix, string courseNum, string year, string semester)
+        {
+            var query = "SELECT COUNT(*) FROM 440_hunter_student_grades WHERE StudentId = @StudentId AND CoursePrefix = @CoursePrefix AND CourseNum = @CourseNum AND Year = @Year AND Semester = @Semester";
+
+            var command = new MySqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@StudentId", studentId);
+            command.Parameters.AddWithValue("@CoursePrefix", coursePrefix);
+            command.Parameters.AddWithValue("@CourseNum", courseNum);
+            command.Parameters.AddWithValue("@Year", year);
+            command.Parameters.AddWithValue("@Semester", semester);
+
+            object result = command.ExecuteScalar();
+
+            if (result != null && int.TryParse(result.ToString(), out int count))
+            {
+                return count > 0;
+            }
+
+            return false;
+        }
+
+        //method to check if a course exists in the DB
+        static bool CourseExists(MySqlConnection connection, string coursePrefix, string courseNum, string year, string semester)
+        {
+            var query = "SELECT COUNT(*) FROM 440_hunter_course_credit_hours WHERE CoursePrefix = @CoursePrefix AND CourseNum = @CourseNum AND Year = @Year AND Semester = @Semester";
+
+            var command = new MySqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@CoursePrefix", coursePrefix);
+            command.Parameters.AddWithValue("@CourseNum", courseNum);
+            command.Parameters.AddWithValue("@Year", year);
+            command.Parameters.AddWithValue("@Semester", semester);
 
             object result = command.ExecuteScalar();
 
