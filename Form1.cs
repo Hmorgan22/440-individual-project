@@ -50,7 +50,7 @@ namespace CSC440_GroupProject
                     //variables for inserting the student into tables
                     string Name = addNameText.Text;
                     string Id = addIdText.Text;
-                    string Grade = addGradeText.Text;
+                    string Grade = addGradeText.Text.ToUpper();
                     string Prefix = addPrefixText.Text;
                     string Number = addNumText.Text;
                     string year = addYearText.Text;
@@ -101,7 +101,7 @@ namespace CSC440_GroupProject
                     connection.Close();
 
                     //reset add student screen
-                    MessageBox.Show("Student grade added succesffully.");
+                    MessageBox.Show("Student grade added successfully.");
                     addNameText.Text = "";
                     addIdText.Text = "";
                     addGradeText.Text = "";
@@ -129,8 +129,61 @@ namespace CSC440_GroupProject
 
         private void DeleteStudentButton_Click(object sender, EventArgs e)
         {
-            //will eventually add if condition to see if delete was successful
-            MessageBox.Show("This record does not exist!", "Delete Record Error");
+            //Method to delete a student from the database.
+            try
+            {
+                string connectionString = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
+
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    //variables for deleteing the student's grade
+                    string Id = deleteIdText.Text;
+                    string Prefix = deletePrefixText.Text;
+                    string Number = deleteNumText.Text;
+                    string year = deleteYearText.Text;
+                    string semester = deleteSemesterText.Text;
+
+                    if (GradeExists(connection, Id, Prefix, Number, year, semester))
+                    {
+                        //Delete student's grade from the DB for a specific class and time.
+                        string deleteQueryGrades = "DELETE FROM 440_hunter_student_grades WHERE StudentId = @Id AND CoursePrefix = @Prefix AND CourseNum = @Num AND Year = @Year AND Semester = @Semester";
+                        using (MySqlCommand command = new MySqlCommand(deleteQueryGrades, connection))
+                        {
+                            command.Parameters.AddWithValue("@Id", Id);
+                            command.Parameters.AddWithValue("@Prefix", Prefix);
+                            command.Parameters.AddWithValue("@Num", Number);
+                            command.Parameters.AddWithValue("@Year", year);
+                            command.Parameters.AddWithValue("@Semester", semester);
+                            command.ExecuteNonQuery();
+                        }
+
+                        connection.Close();
+
+                        //reset delete grade screen
+                        MessageBox.Show("Student grade deleted succesfully.");
+                        deleteIdText.Text = "";
+                        deletePrefixText.Text = "";
+                        deleteNumText.Text = "";
+                        deleteYearText.Text = "";
+                        deleteSemesterText.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unable to delete student grade");
+                        deleteIdText.Text = "";
+                        deletePrefixText.Text = "";
+                        deleteNumText.Text = "";
+                        deleteYearText.Text = "";
+                        deleteSemesterText.Text = "";
+                    } 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unable to delete student grade from database.");
+            }
         }
 
         private void PrintTranscriptButton_Click(object sender, EventArgs e)
@@ -200,7 +253,7 @@ namespace CSC440_GroupProject
                                 //get data from the excel files
                                 string excelName = row[0].ToString();
                                 string excelId = row[1].ToString();
-                                string excelGrade = row[2].ToString();
+                                string excelGrade = row[2].ToString().ToUpper();
 
                                 //get the file name
                                 string fileName = Path.GetFileName(excelFile);
@@ -281,8 +334,6 @@ namespace CSC440_GroupProject
                                 {
                                     MessageBox.Show("Unable to add student to database");
                                 }
-
-
                             }
                             catch (Exception ex)
                             {
@@ -383,6 +434,9 @@ namespace CSC440_GroupProject
         {
             TranscriptPanel.Visible = true;
             TranscriptSearchPanel.Visible = false;
+
+            //Method for creating a students transcript
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -402,7 +456,65 @@ namespace CSC440_GroupProject
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            MessageBox.Show("Student does not exist!", "Transcript Record Error");
+            //Method to update students grades in DB.
+            try
+            {
+                string connectionString = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
+
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    //variables for updating the student's grade
+                    string Id = updateIdText.Text;
+                    string Prefix = updatePrefixText.Text;
+                    string Number = updateNumText.Text;
+                    string Grade = updateGradeText.Text.ToUpper();
+                    string year = updateYearText.Text;
+                    string semester = updateSemesterText.Text;
+
+                    if (GradeExists(connection, Id, Prefix, Number, year, semester))
+                    {
+                        // Update a student's grade
+                        string updateQueryGrades = "UPDATE 440_hunter_student_grades SET Grade = @Grade WHERE StudentId = @Id AND CoursePrefix = @Prefix AND CourseNum = @Num AND Year = @Year AND Semester = @Semester";
+                        using (MySqlCommand command = new MySqlCommand(updateQueryGrades, connection))
+                        {
+                            command.Parameters.AddWithValue("@Id", Id);
+                            command.Parameters.AddWithValue("@Prefix", Prefix);
+                            command.Parameters.AddWithValue("@Num", Number);
+                            command.Parameters.AddWithValue("@Grade", Grade);
+                            command.Parameters.AddWithValue("@Year", year);
+                            command.Parameters.AddWithValue("@Semester", semester);
+                            command.ExecuteNonQuery();
+                        }
+
+                        connection.Close();
+
+                        //reset update grade screen
+                        MessageBox.Show("Student grade changed succesfully.");
+                        updateIdText.Text = "";
+                        updatePrefixText.Text = "";
+                        updateNumText.Text = "";
+                        updateGradeText.Text = "";
+                        updateYearText.Text = "";
+                        updateSemesterText.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unable to change student grade");
+                        updateIdText.Text = "";
+                        updatePrefixText.Text = "";
+                        updateNumText.Text = "";
+                        updateGradeText.Text = "";
+                        updateYearText.Text = "";
+                        updateSemesterText.Text = "";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unable to change student grade in database.");
+            }
         }
 
         private void button2_Click_2(object sender, EventArgs e)
@@ -437,6 +549,21 @@ namespace CSC440_GroupProject
         }
 
         private void label23_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
         {
 
         }
