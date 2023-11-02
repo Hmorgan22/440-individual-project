@@ -95,6 +95,30 @@ namespace CSC440_GroupProject
 
                 foreach (string excelFile in excelFiles)
                 {
+                    //get the file name
+                    string fileName = Path.GetFileName(excelFile);
+                    string[] words = fileName.Split(' ');
+
+                    if (words.Length >= 4)
+                    {
+                        string coursePrefix = words[0];
+                        string courseNumber = words[1];
+                        string year = words[2];
+                        string semester = words[3];
+
+                        //removes .xlsx extension
+                        if (semester.EndsWith(".xlsx", StringComparison.OrdinalIgnoreCase))
+                        {
+                            semester = semester.Substring(0, semester.Length - 5);
+                        }
+
+                        //removes .xls extension
+                        if (semester.EndsWith(".xls", StringComparison.OrdinalIgnoreCase))
+                        {
+                            semester = semester.Substring(0, semester.Length - 4);
+                        }
+                    }
+
                     using (FileStream stream = File.Open(excelFile, FileMode.Open, FileAccess.Read))
                     {
                         IExcelDataReader reader;
@@ -125,17 +149,25 @@ namespace CSC440_GroupProject
                             string excelId = row[1].ToString(); 
                             string excelGrade = row[2].ToString();
 
-                            //if (!StudentExists(connection, excelName))
-                            //{
-
-                            //    // Insert the name into the database.
-                            //    //string insertQuery = "INSERT INTO Students (name) VALUES (@excelName)";
-                            //    //using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
-                            //    //{
-                            //    //    command.Parameters.AddWithValue("@name", name);
-                            //    //    command.ExecuteNonQuery();
-                            //    //}
-                            //}
+                            if (!StudentExists(connection, excelName))
+                            {
+                                try
+                                {
+                                    //Insert the name into the database.
+                                    string insertQuery = "INSERT INTO 440_hunter_student (Name, StudentId) VALUES (@Name, @Id)";
+                                    using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
+                                    {
+                                        command.Parameters.AddWithValue("@Name", excelName);
+                                        command.Parameters.AddWithValue("@Id", excelId);
+                                        command.ExecuteNonQuery();
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show("Unable to add student to database");
+                                }
+                                
+                            }
 
                         }
 
@@ -150,14 +182,20 @@ namespace CSC440_GroupProject
         }
 
         //Method used to see if the student exists in the database by checking if the name returns a count.
-        private bool StudentExists(MySqlConnection connection, string name)
+        static bool StudentExists(MySqlConnection connection, string name)
         {
-            var query = "SELECT COUNT(*) FROM Students WHERE Name = @Name";
+            var query = "SELECT COUNT(*) FROM 440_hunter_student WHERE Name = @Name";
             var command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@Name", name);
 
-            int count = (int)command.ExecuteScalar();
-            return count > 0;
+            object result = command.ExecuteScalar();
+
+            if (result != null && int.TryParse(result.ToString(), out int count))
+            {
+                return count > 0;
+            }
+
+            return false; // Return false if the result is not a valid integer
         }
 
         static string GetSelectedFolderPath()

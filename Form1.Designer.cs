@@ -94,7 +94,6 @@
             this.CancelExcelButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label27 = new System.Windows.Forms.Label();
-            this.filePathTextBox = new System.Windows.Forms.TextBox();
             this.AddPanel.SuspendLayout();
             this.DeletePanel.SuspendLayout();
             this.TranscriptPanel.SuspendLayout();
@@ -123,7 +122,7 @@
             this.AddButton.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.AddButton.Location = new System.Drawing.Point(24, 113);
-            this.AddButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.AddButton.Margin = new System.Windows.Forms.Padding(6);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(168, 83);
             this.AddButton.TabIndex = 2;
@@ -148,7 +147,7 @@
             this.AddPanel.Controls.Add(this.label2);
             this.AddPanel.Controls.Add(this.studentNameBox);
             this.AddPanel.Location = new System.Drawing.Point(268, 113);
-            this.AddPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.AddPanel.Margin = new System.Windows.Forms.Padding(6);
             this.AddPanel.Name = "AddPanel";
             this.AddPanel.Size = new System.Drawing.Size(928, 460);
             this.AddPanel.TabIndex = 5;
@@ -161,7 +160,7 @@
             this.CloseAddFormButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseAddFormButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.CloseAddFormButton.Location = new System.Drawing.Point(730, 346);
-            this.CloseAddFormButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.CloseAddFormButton.Margin = new System.Windows.Forms.Padding(6);
             this.CloseAddFormButton.Name = "CloseAddFormButton";
             this.CloseAddFormButton.Size = new System.Drawing.Size(168, 83);
             this.CloseAddFormButton.TabIndex = 10;
@@ -176,7 +175,7 @@
             this.EnterNewGradeButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EnterNewGradeButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.EnterNewGradeButton.Location = new System.Drawing.Point(730, 252);
-            this.EnterNewGradeButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.EnterNewGradeButton.Margin = new System.Windows.Forms.Padding(6);
             this.EnterNewGradeButton.Name = "EnterNewGradeButton";
             this.EnterNewGradeButton.Size = new System.Drawing.Size(168, 83);
             this.EnterNewGradeButton.TabIndex = 10;
@@ -191,7 +190,7 @@
             "Spring",
             "Fall"});
             this.comboBox1.Location = new System.Drawing.Point(282, 371);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(6);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(344, 33);
             this.comboBox1.TabIndex = 10;
@@ -200,7 +199,7 @@
             // 
             this.textBox3.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox3.Location = new System.Drawing.Point(282, 156);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(6);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(344, 31);
             this.textBox3.TabIndex = 9;
@@ -209,7 +208,7 @@
             // 
             this.textBox2.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox2.Location = new System.Drawing.Point(282, 302);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(6);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(344, 31);
             this.textBox2.TabIndex = 8;
@@ -218,7 +217,7 @@
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox1.Location = new System.Drawing.Point(282, 233);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(6);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(344, 31);
             this.textBox1.TabIndex = 7;
@@ -293,7 +292,7 @@
             // 
             this.studentNameBox.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.studentNameBox.Location = new System.Drawing.Point(282, 90);
-            this.studentNameBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.studentNameBox.Margin = new System.Windows.Forms.Padding(6);
             this.studentNameBox.Name = "studentNameBox";
             this.studentNameBox.Size = new System.Drawing.Size(344, 31);
             this.studentNameBox.TabIndex = 0;
@@ -315,7 +314,7 @@
             this.DeletePanel.Controls.Add(this.label12);
             this.DeletePanel.Controls.Add(this.textBox7);
             this.DeletePanel.Location = new System.Drawing.Point(268, 113);
-            this.DeletePanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.DeletePanel.Margin = new System.Windows.Forms.Padding(6);
             this.DeletePanel.Name = "DeletePanel";
             this.DeletePanel.Size = new System.Drawing.Size(928, 460);
             this.DeletePanel.TabIndex = 11;
@@ -328,7 +327,7 @@
             this.CancelDeleteButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CancelDeleteButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.CancelDeleteButton.Location = new System.Drawing.Point(730, 346);
-            this.CancelDeleteButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.CancelDeleteButton.Margin = new System.Windows.Forms.Padding(6);
             this.CancelDeleteButton.Name = "CancelDeleteButton";
             this.CancelDeleteButton.Size = new System.Drawing.Size(168, 83);
             this.CancelDeleteButton.TabIndex = 10;
@@ -343,7 +342,7 @@
             this.DeleteStudentButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteStudentButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.DeleteStudentButton.Location = new System.Drawing.Point(730, 252);
-            this.DeleteStudentButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.DeleteStudentButton.Margin = new System.Windows.Forms.Padding(6);
             this.DeleteStudentButton.Name = "DeleteStudentButton";
             this.DeleteStudentButton.Size = new System.Drawing.Size(168, 83);
             this.DeleteStudentButton.TabIndex = 10;
@@ -358,7 +357,7 @@
             "Spring",
             "Fall"});
             this.comboBox2.Location = new System.Drawing.Point(282, 371);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(6);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(344, 33);
             this.comboBox2.TabIndex = 10;
@@ -367,7 +366,7 @@
             // 
             this.textBox4.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox4.Location = new System.Drawing.Point(282, 156);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(6);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(344, 31);
             this.textBox4.TabIndex = 9;
@@ -376,7 +375,7 @@
             // 
             this.textBox5.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox5.Location = new System.Drawing.Point(282, 302);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(6);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(344, 31);
             this.textBox5.TabIndex = 8;
@@ -385,7 +384,7 @@
             // 
             this.textBox6.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox6.Location = new System.Drawing.Point(282, 233);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(6);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(344, 31);
             this.textBox6.TabIndex = 7;
@@ -460,7 +459,7 @@
             // 
             this.textBox7.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox7.Location = new System.Drawing.Point(282, 90);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(6);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(344, 31);
             this.textBox7.TabIndex = 0;
@@ -472,7 +471,7 @@
             this.EditButton.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EditButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.EditButton.Location = new System.Drawing.Point(24, 208);
-            this.EditButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.EditButton.Margin = new System.Windows.Forms.Padding(6);
             this.EditButton.Name = "EditButton";
             this.EditButton.Size = new System.Drawing.Size(168, 83);
             this.EditButton.TabIndex = 6;
@@ -487,7 +486,7 @@
             this.DeleteButton.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.DeleteButton.Location = new System.Drawing.Point(24, 302);
-            this.DeleteButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.DeleteButton.Margin = new System.Windows.Forms.Padding(6);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(168, 83);
             this.DeleteButton.TabIndex = 7;
@@ -502,7 +501,7 @@
             this.UploadExcelButton.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UploadExcelButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.UploadExcelButton.Location = new System.Drawing.Point(24, 396);
-            this.UploadExcelButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.UploadExcelButton.Margin = new System.Windows.Forms.Padding(6);
             this.UploadExcelButton.Name = "UploadExcelButton";
             this.UploadExcelButton.Size = new System.Drawing.Size(168, 83);
             this.UploadExcelButton.TabIndex = 8;
@@ -517,7 +516,7 @@
             this.CloseButton.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.CloseButton.Location = new System.Drawing.Point(24, 585);
-            this.CloseButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.CloseButton.Margin = new System.Windows.Forms.Padding(6);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(168, 83);
             this.CloseButton.TabIndex = 9;
@@ -532,7 +531,7 @@
             this.PrintTranscriptButton.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PrintTranscriptButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.PrintTranscriptButton.Location = new System.Drawing.Point(24, 490);
-            this.PrintTranscriptButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.PrintTranscriptButton.Margin = new System.Windows.Forms.Padding(6);
             this.PrintTranscriptButton.Name = "PrintTranscriptButton";
             this.PrintTranscriptButton.Size = new System.Drawing.Size(168, 83);
             this.PrintTranscriptButton.TabIndex = 10;
@@ -551,7 +550,7 @@
             this.TranscriptPanel.Controls.Add(this.label17);
             this.TranscriptPanel.Controls.Add(this.textBox11);
             this.TranscriptPanel.Location = new System.Drawing.Point(268, 113);
-            this.TranscriptPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.TranscriptPanel.Margin = new System.Windows.Forms.Padding(6);
             this.TranscriptPanel.Name = "TranscriptPanel";
             this.TranscriptPanel.Size = new System.Drawing.Size(928, 460);
             this.TranscriptPanel.TabIndex = 12;
@@ -583,7 +582,7 @@
             // 
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(282, 206);
-            this.listView1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.listView1.Margin = new System.Windows.Forms.Padding(6);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(344, 202);
             this.listView1.TabIndex = 12;
@@ -593,7 +592,7 @@
             // 
             this.textBox12.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox12.Location = new System.Drawing.Point(282, 94);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox12.Margin = new System.Windows.Forms.Padding(6);
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(344, 31);
             this.textBox12.TabIndex = 11;
@@ -605,7 +604,7 @@
             this.CloseTranscriptButton.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseTranscriptButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.CloseTranscriptButton.Location = new System.Drawing.Point(730, 346);
-            this.CloseTranscriptButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.CloseTranscriptButton.Margin = new System.Windows.Forms.Padding(6);
             this.CloseTranscriptButton.Name = "CloseTranscriptButton";
             this.CloseTranscriptButton.Size = new System.Drawing.Size(168, 83);
             this.CloseTranscriptButton.TabIndex = 10;
@@ -628,7 +627,7 @@
             // 
             this.textBox11.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox11.Location = new System.Drawing.Point(282, 23);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox11.Margin = new System.Windows.Forms.Padding(6);
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(344, 31);
             this.textBox11.TabIndex = 0;
@@ -641,7 +640,7 @@
             this.TranscriptSearchPanel.Controls.Add(this.textBox8);
             this.TranscriptSearchPanel.Controls.Add(this.label14);
             this.TranscriptSearchPanel.Location = new System.Drawing.Point(400, 192);
-            this.TranscriptSearchPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.TranscriptSearchPanel.Margin = new System.Windows.Forms.Padding(6);
             this.TranscriptSearchPanel.Name = "TranscriptSearchPanel";
             this.TranscriptSearchPanel.Size = new System.Drawing.Size(626, 188);
             this.TranscriptSearchPanel.TabIndex = 11;
@@ -654,7 +653,7 @@
             this.CancelTranscriptSearchButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CancelTranscriptSearchButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.CancelTranscriptSearchButton.Location = new System.Drawing.Point(482, 123);
-            this.CancelTranscriptSearchButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.CancelTranscriptSearchButton.Margin = new System.Windows.Forms.Padding(6);
             this.CancelTranscriptSearchButton.Name = "CancelTranscriptSearchButton";
             this.CancelTranscriptSearchButton.Size = new System.Drawing.Size(138, 52);
             this.CancelTranscriptSearchButton.TabIndex = 12;
@@ -669,7 +668,7 @@
             this.SearchForTranscriptButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchForTranscriptButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.SearchForTranscriptButton.Location = new System.Drawing.Point(478, 33);
-            this.SearchForTranscriptButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.SearchForTranscriptButton.Margin = new System.Windows.Forms.Padding(6);
             this.SearchForTranscriptButton.Name = "SearchForTranscriptButton";
             this.SearchForTranscriptButton.Size = new System.Drawing.Size(142, 54);
             this.SearchForTranscriptButton.TabIndex = 12;
@@ -681,7 +680,7 @@
             // 
             this.textBox8.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox8.Location = new System.Drawing.Point(38, 85);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(6);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(344, 31);
             this.textBox8.TabIndex = 8;
@@ -714,7 +713,7 @@
             this.ChangeGradePanel.Controls.Add(this.label22);
             this.ChangeGradePanel.Controls.Add(this.textBox14);
             this.ChangeGradePanel.Location = new System.Drawing.Point(266, 115);
-            this.ChangeGradePanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.ChangeGradePanel.Margin = new System.Windows.Forms.Padding(6);
             this.ChangeGradePanel.Name = "ChangeGradePanel";
             this.ChangeGradePanel.Size = new System.Drawing.Size(928, 460);
             this.ChangeGradePanel.TabIndex = 12;
@@ -727,7 +726,7 @@
             this.CloseChangePanel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseChangePanel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.CloseChangePanel.Location = new System.Drawing.Point(730, 346);
-            this.CloseChangePanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.CloseChangePanel.Margin = new System.Windows.Forms.Padding(6);
             this.CloseChangePanel.Name = "CloseChangePanel";
             this.CloseChangePanel.Size = new System.Drawing.Size(168, 83);
             this.CloseChangePanel.TabIndex = 10;
@@ -742,7 +741,7 @@
             this.EnterChangeButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EnterChangeButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.EnterChangeButton.Location = new System.Drawing.Point(730, 252);
-            this.EnterChangeButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.EnterChangeButton.Margin = new System.Windows.Forms.Padding(6);
             this.EnterChangeButton.Name = "EnterChangeButton";
             this.EnterChangeButton.Size = new System.Drawing.Size(168, 83);
             this.EnterChangeButton.TabIndex = 10;
@@ -757,7 +756,7 @@
             "Spring",
             "Fall"});
             this.comboBox3.Location = new System.Drawing.Point(282, 371);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.comboBox3.Margin = new System.Windows.Forms.Padding(6);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(344, 33);
             this.comboBox3.TabIndex = 10;
@@ -766,7 +765,7 @@
             // 
             this.textBox9.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox9.Location = new System.Drawing.Point(282, 156);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox9.Margin = new System.Windows.Forms.Padding(6);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(344, 31);
             this.textBox9.TabIndex = 9;
@@ -775,7 +774,7 @@
             // 
             this.textBox10.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox10.Location = new System.Drawing.Point(282, 302);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox10.Margin = new System.Windows.Forms.Padding(6);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(344, 31);
             this.textBox10.TabIndex = 8;
@@ -784,7 +783,7 @@
             // 
             this.textBox13.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox13.Location = new System.Drawing.Point(282, 233);
-            this.textBox13.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox13.Margin = new System.Windows.Forms.Padding(6);
             this.textBox13.Name = "textBox13";
             this.textBox13.Size = new System.Drawing.Size(344, 31);
             this.textBox13.TabIndex = 7;
@@ -859,7 +858,7 @@
             // 
             this.textBox14.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox14.Location = new System.Drawing.Point(282, 90);
-            this.textBox14.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox14.Margin = new System.Windows.Forms.Padding(6);
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new System.Drawing.Size(344, 31);
             this.textBox14.TabIndex = 0;
@@ -870,9 +869,8 @@
             this.UploadExcelPanel.Controls.Add(this.CancelExcelButton);
             this.UploadExcelPanel.Controls.Add(this.button2);
             this.UploadExcelPanel.Controls.Add(this.label27);
-            this.UploadExcelPanel.Controls.Add(this.filePathTextBox);
             this.UploadExcelPanel.Location = new System.Drawing.Point(400, 192);
-            this.UploadExcelPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.UploadExcelPanel.Margin = new System.Windows.Forms.Padding(6);
             this.UploadExcelPanel.Name = "UploadExcelPanel";
             this.UploadExcelPanel.Size = new System.Drawing.Size(600, 385);
             this.UploadExcelPanel.TabIndex = 13;
@@ -885,7 +883,7 @@
             this.CancelExcelButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CancelExcelButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.CancelExcelButton.Location = new System.Drawing.Point(26, 265);
-            this.CancelExcelButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.CancelExcelButton.Margin = new System.Windows.Forms.Padding(6);
             this.CancelExcelButton.Name = "CancelExcelButton";
             this.CancelExcelButton.Size = new System.Drawing.Size(168, 83);
             this.CancelExcelButton.TabIndex = 10;
@@ -900,11 +898,11 @@
             this.button2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button2.Location = new System.Drawing.Point(418, 265);
-            this.button2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.button2.Margin = new System.Windows.Forms.Padding(6);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(168, 83);
             this.button2.TabIndex = 10;
-            this.button2.Text = "Enter";
+            this.button2.Text = "Select";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_2);
             // 
@@ -912,21 +910,13 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(132, 71);
+            this.label27.Location = new System.Drawing.Point(204, 132);
             this.label27.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(342, 36);
+            this.label27.Size = new System.Drawing.Size(215, 36);
             this.label27.TabIndex = 2;
-            this.label27.Text = "Please Insert the File Path";
-            // 
-            // filePathTextBox
-            // 
-            this.filePathTextBox.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.filePathTextBox.Location = new System.Drawing.Point(122, 158);
-            this.filePathTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.filePathTextBox.Name = "filePathTextBox";
-            this.filePathTextBox.Size = new System.Drawing.Size(344, 31);
-            this.filePathTextBox.TabIndex = 0;
+            this.label27.Text = "Select a Folder ";
+            this.label27.Click += new System.EventHandler(this.label27_Click);
             // 
             // HomePageForm
             // 
@@ -948,7 +938,7 @@
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "HomePageForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -1036,7 +1026,6 @@
         private System.Windows.Forms.Button CancelExcelButton;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.TextBox filePathTextBox;
     }
 }
 
