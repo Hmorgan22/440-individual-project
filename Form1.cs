@@ -77,7 +77,7 @@ namespace CSC440_GroupProject
         //Method used to import student data from the excel file.
         public void ImportStudentDataFromExcel(string folderPath)
         {
-            // Get a list of all Excel files in the specified folder.
+            // Get a list of all Excel files in the specified folder
             string[] excelFiles = Directory.GetFiles(folderPath, "*.xls*");
 
             if (excelFiles.Length == 0)
@@ -160,6 +160,22 @@ namespace CSC440_GroupProject
             return count > 0;
         }
 
+        static string GetSelectedFolderPath()
+        {
+            string selectedFolderPath = null;
+            using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
+            {
+                folderBrowserDialog.Description = "Select a Folder Containing Excel Files";
+
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    selectedFolderPath = folderBrowserDialog.SelectedPath;
+                }
+            }
+            return selectedFolderPath;
+        }
+
+
         private void SearchForTranscriptButton_Click(object sender, EventArgs e)
         {
             TranscriptPanel.Visible = true;
@@ -189,7 +205,8 @@ namespace CSC440_GroupProject
         private void button2_Click_2(object sender, EventArgs e)
         {
 
-            string path = filePathTextBox.Text;
+            //string path = filePathTextBox.Text;
+            string path = GetSelectedFolderPath();
             Console.WriteLine(path);
             ImportStudentDataFromExcel(path);
 
@@ -212,6 +229,11 @@ namespace CSC440_GroupProject
         private void button1_Click(object sender, EventArgs e)
         {
             UploadExcelPanel.Visible = false;
+        }
+
+        private void label27_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
