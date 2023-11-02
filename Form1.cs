@@ -74,7 +74,7 @@ namespace CSC440_GroupProject
             UploadExcelPanel.Visible = true;
         }
 
-        //Method used to import student data from the excel file.
+        //Method used to import student data from the excel files.
         public void ImportStudentDataFromExcel(string folderPath)
         {
             // Get a list of all Excel files in the specified folder
@@ -86,7 +86,7 @@ namespace CSC440_GroupProject
                 return;
             }
 
-            // Define your SQL Server connection string.
+            // DB connection string
             string connectionString = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -95,30 +95,6 @@ namespace CSC440_GroupProject
 
                 foreach (string excelFile in excelFiles)
                 {
-                    //get the file name
-                    string fileName = Path.GetFileName(excelFile);
-                    string[] words = fileName.Split(' ');
-
-                    if (words.Length >= 4)
-                    {
-                        string coursePrefix = words[0];
-                        string courseNumber = words[1];
-                        string year = words[2];
-                        string semester = words[3];
-
-                        //removes .xlsx extension
-                        if (semester.EndsWith(".xlsx", StringComparison.OrdinalIgnoreCase))
-                        {
-                            semester = semester.Substring(0, semester.Length - 5);
-                        }
-
-                        //removes .xls extension
-                        if (semester.EndsWith(".xls", StringComparison.OrdinalIgnoreCase))
-                        {
-                            semester = semester.Substring(0, semester.Length - 4);
-                        }
-                    }
-
                     using (FileStream stream = File.Open(excelFile, FileMode.Open, FileAccess.Read))
                     {
                         IExcelDataReader reader;
@@ -133,7 +109,7 @@ namespace CSC440_GroupProject
                         }
                         else
                         {
-                            // Handle unsupported file format or display an error message.
+                            // error message if not in excel file format
                             MessageBox.Show($"Unsupported file format for {excelFile}");
                             continue;
                         }
@@ -141,34 +117,95 @@ namespace CSC440_GroupProject
                         DataSet result = reader.AsDataSet();
 
                         // Process the data and insert names into the database.
-                        DataTable table = result.Tables[0]; // Assuming the data is in the first table of the DataSet.
+                        DataTable table = result.Tables[0];
 
                         foreach (DataRow row in table.Rows)
                         {
-                            string excelName = row[0].ToString(); // Replace "NameColumn" with the actual column name in your Excel file.
-                            string excelId = row[1].ToString(); 
-                            string excelGrade = row[2].ToString();
-
-                            if (!StudentExists(connection, excelName))
+                            try
                             {
-                                try
+                                //get data from the excel files
+                                string excelName = row[0].ToString();
+                                string excelId = row[1].ToString();
+                                string excelGrade = row[2].ToString();
+
+                                //get the file name
+                                string fileName = Path.GetFileName(excelFile);
+                                string[] words = fileName.Split(' ');
+
+                                //get the needed variables from the file name
+                                string coursePrefix = "";
+                                string courseNumber = "";
+                                string year = "";
+                                string semester = "";
+
+                                if (words.Length >= 4)
                                 {
-                                    //Insert the name into the database.
-                                    string insertQuery = "INSERT INTO 440_hunter_student (Name, StudentId) VALUES (@Name, @Id)";
-                                    using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
+                                    coursePrefix = words[0];
+                                    courseNumber = words[1];
+                                    year = words[2];
+                                    semester = words[3];
+
+                                    //removes .xlsx extension
+                                    if (semester.EndsWith(".xlsx", StringComparison.OrdinalIgnoreCase))
                                     {
-                                        command.Parameters.AddWithValue("@Name", excelName);
-                                        command.Parameters.AddWithValue("@Id", excelId);
-                                        command.ExecuteNonQuery();
+                                        semester = semester.Substring(0, semester.Length - 5);
+                                    }
+
+                                    //removes .xls extension
+                                    if (semester.EndsWith(".xls", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        semester = semester.Substring(0, semester.Length - 4);
                                     }
                                 }
-                                catch (Exception ex)
+
+                                if (!StudentExists(connection, excelName))
                                 {
-                                    MessageBox.Show("Unable to add student to database");
+                                    try
+                                    {
+                                        //Insert the name and ID  into the student table.
+                                        string insertQuery = "INSERT INTO 440_hunter_student (Name, StudentId) VALUES (@Name, @Id)";
+                                        using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
+                                        {
+                                            command.Parameters.AddWithValue("@Name", excelName);
+                                            command.Parameters.AddWithValue("@Id", excelId);
+                                            command.ExecuteNonQuery();
+                                        }
+
+                                        //Insert the Id, prefix, course num, grade, year, semester into the database.
+                                        string insertQueryGrades = "INSERT INTO 440_hunter_student_grades (StudentId, CoursePrefix, CourseNum, Grade, Year, Semester) VALUES (@Id, @Prefix, @Num, @Grade, @Year, @Semester)";
+                                        using (MySqlCommand command = new MySqlCommand(insertQueryGrades, connection))
+                                        {
+                                            command.Parameters.AddWithValue("@Id", excelId);
+                                            command.Parameters.AddWithValue("@Prefix", coursePrefix);
+                                            command.Parameters.AddWithValue("@Num", courseNumber);
+                                            command.Parameters.AddWithValue("@Grade", excelGrade);
+                                            command.Parameters.AddWithValue("@Year", year);
+                                            command.Parameters.AddWithValue("@Semester", semester);
+                                            command.ExecuteNonQuery();
+                                        }
+
+                                        //Insert the prefix, course num, year, semester, hours into the database.
+                                        string insertQueryHours = "INSERT INTO 440_hunter_course_credit_hours (CoursePrefix, CourseNum, Year, Semester) VALUES (@Prefix, @Num, @Year, @Semester)";
+                                        using (MySqlCommand command = new MySqlCommand(insertQueryHours, connection))
+                                        {
+                                            command.Parameters.AddWithValue("@Prefix", coursePrefix);
+                                            command.Parameters.AddWithValue("@Num", courseNumber);
+                                            command.Parameters.AddWithValue("@Year", year);
+                                            command.Parameters.AddWithValue("@Semester", semester);
+                                            command.ExecuteNonQuery();
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show("Unable to add student to database");
+                                    }
+
                                 }
+                            }
+                            catch (Exception ex)
+                            {
                                 
                             }
-
                         }
 
                         reader.Close();
@@ -178,7 +215,7 @@ namespace CSC440_GroupProject
                 connection.Close();
             }
 
-            MessageBox.Show($"Processed and inserted names from {excelFiles.Length} Excel files into the database.");
+            MessageBox.Show($"Processed and inserted student information from {excelFiles.Length} Excel files into the database.");
         }
 
         //Method used to see if the student exists in the database by checking if the name returns a count.
@@ -195,9 +232,10 @@ namespace CSC440_GroupProject
                 return count > 0;
             }
 
-            return false; // Return false if the result is not a valid integer
+            return false; 
         }
 
+        //method to get the folder path by using the file manager.
         static string GetSelectedFolderPath()
         {
             string selectedFolderPath = null;
@@ -242,26 +280,8 @@ namespace CSC440_GroupProject
 
         private void button2_Click_2(object sender, EventArgs e)
         {
-
-            //string path = filePathTextBox.Text;
             string path = GetSelectedFolderPath();
-            Console.WriteLine(path);
             ImportStudentDataFromExcel(path);
-
-            //******************* USE THIS INSTEAD OF THE TOP LINE ONCE CODE IS DONE TESTING **********************
-            //try
-            //{
-            //    string path = filePathTextBox.Text;
-            //    Console.WriteLine(path);
-            //    ImportStudentDataFromExcel(path);
-            //}catch(Exception ex)
-            //{
-
-            //    MessageBox.Show("File Path Does Not Exist", "Excel Upload Message");
-            //    filePathTextBox.Text = "";
-            //    UploadExcelPanel.Visible = false;
-
-            //}
         }
 
         private void button1_Click(object sender, EventArgs e)
