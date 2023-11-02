@@ -79,17 +79,17 @@
             this.ChangeGradePanel = new System.Windows.Forms.Panel();
             this.CloseChangePanel = new System.Windows.Forms.Button();
             this.EnterChangeButton = new System.Windows.Forms.Button();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.updateSemesterText = new System.Windows.Forms.ComboBox();
+            this.updateNumText = new System.Windows.Forms.TextBox();
+            this.updateYearText = new System.Windows.Forms.TextBox();
+            this.updateGradeText = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.updateIdText = new System.Windows.Forms.TextBox();
             this.UploadExcelPanel = new System.Windows.Forms.Panel();
             this.CancelExcelButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -98,6 +98,8 @@
             this.addIdText = new System.Windows.Forms.TextBox();
             this.addNumText = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
+            this.updatePrefixText = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
             this.AddPanel.SuspendLayout();
             this.DeletePanel.SuspendLayout();
             this.TranscriptPanel.SuspendLayout();
@@ -152,7 +154,7 @@
             this.AddPanel.Controls.Add(this.label3);
             this.AddPanel.Controls.Add(this.label2);
             this.AddPanel.Controls.Add(this.addNameText);
-            this.AddPanel.Location = new System.Drawing.Point(530, 29);
+            this.AddPanel.Location = new System.Drawing.Point(571, 9);
             this.AddPanel.Name = "AddPanel";
             this.AddPanel.Size = new System.Drawing.Size(464, 283);
             this.AddPanel.TabIndex = 5;
@@ -307,7 +309,7 @@
             this.DeletePanel.Controls.Add(this.label11);
             this.DeletePanel.Controls.Add(this.label12);
             this.DeletePanel.Controls.Add(this.textBox7);
-            this.DeletePanel.Location = new System.Drawing.Point(319, 361);
+            this.DeletePanel.Location = new System.Drawing.Point(560, 304);
             this.DeletePanel.Name = "DeletePanel";
             this.DeletePanel.Size = new System.Drawing.Size(464, 239);
             this.DeletePanel.TabIndex = 11;
@@ -661,22 +663,24 @@
             // ChangeGradePanel
             // 
             this.ChangeGradePanel.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.ChangeGradePanel.Controls.Add(this.updatePrefixText);
+            this.ChangeGradePanel.Controls.Add(this.label25);
             this.ChangeGradePanel.Controls.Add(this.CloseChangePanel);
             this.ChangeGradePanel.Controls.Add(this.EnterChangeButton);
-            this.ChangeGradePanel.Controls.Add(this.comboBox3);
-            this.ChangeGradePanel.Controls.Add(this.textBox9);
-            this.ChangeGradePanel.Controls.Add(this.textBox10);
-            this.ChangeGradePanel.Controls.Add(this.textBox13);
+            this.ChangeGradePanel.Controls.Add(this.updateSemesterText);
+            this.ChangeGradePanel.Controls.Add(this.updateNumText);
+            this.ChangeGradePanel.Controls.Add(this.updateYearText);
+            this.ChangeGradePanel.Controls.Add(this.updateGradeText);
             this.ChangeGradePanel.Controls.Add(this.label15);
             this.ChangeGradePanel.Controls.Add(this.label16);
             this.ChangeGradePanel.Controls.Add(this.label19);
             this.ChangeGradePanel.Controls.Add(this.label20);
             this.ChangeGradePanel.Controls.Add(this.label21);
             this.ChangeGradePanel.Controls.Add(this.label22);
-            this.ChangeGradePanel.Controls.Add(this.textBox14);
-            this.ChangeGradePanel.Location = new System.Drawing.Point(668, 318);
+            this.ChangeGradePanel.Controls.Add(this.updateIdText);
+            this.ChangeGradePanel.Location = new System.Drawing.Point(516, 24);
             this.ChangeGradePanel.Name = "ChangeGradePanel";
-            this.ChangeGradePanel.Size = new System.Drawing.Size(464, 239);
+            this.ChangeGradePanel.Size = new System.Drawing.Size(464, 254);
             this.ChangeGradePanel.TabIndex = 12;
             this.ChangeGradePanel.Visible = false;
             // 
@@ -708,46 +712,46 @@
             this.EnterChangeButton.UseVisualStyleBackColor = false;
             this.EnterChangeButton.Click += new System.EventHandler(this.button2_Click_1);
             // 
-            // comboBox3
+            // updateSemesterText
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.updateSemesterText.FormattingEnabled = true;
+            this.updateSemesterText.Items.AddRange(new object[] {
             "Spring",
             "Fall"});
-            this.comboBox3.Location = new System.Drawing.Point(141, 193);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(174, 21);
-            this.comboBox3.TabIndex = 10;
+            this.updateSemesterText.Location = new System.Drawing.Point(141, 224);
+            this.updateSemesterText.Name = "updateSemesterText";
+            this.updateSemesterText.Size = new System.Drawing.Size(174, 21);
+            this.updateSemesterText.TabIndex = 10;
             // 
-            // textBox9
+            // updateNumText
             // 
-            this.textBox9.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox9.Location = new System.Drawing.Point(141, 81);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(174, 20);
-            this.textBox9.TabIndex = 9;
+            this.updateNumText.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.updateNumText.Location = new System.Drawing.Point(141, 119);
+            this.updateNumText.Name = "updateNumText";
+            this.updateNumText.Size = new System.Drawing.Size(174, 20);
+            this.updateNumText.TabIndex = 9;
             // 
-            // textBox10
+            // updateYearText
             // 
-            this.textBox10.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox10.Location = new System.Drawing.Point(141, 157);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(174, 20);
-            this.textBox10.TabIndex = 8;
+            this.updateYearText.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.updateYearText.Location = new System.Drawing.Point(141, 192);
+            this.updateYearText.Name = "updateYearText";
+            this.updateYearText.Size = new System.Drawing.Size(174, 20);
+            this.updateYearText.TabIndex = 8;
             // 
-            // textBox13
+            // updateGradeText
             // 
-            this.textBox13.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox13.Location = new System.Drawing.Point(141, 121);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(174, 20);
-            this.textBox13.TabIndex = 7;
+            this.updateGradeText.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.updateGradeText.Location = new System.Drawing.Point(141, 156);
+            this.updateGradeText.Name = "updateGradeText";
+            this.updateGradeText.Size = new System.Drawing.Size(174, 20);
+            this.updateGradeText.TabIndex = 7;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(14, 196);
+            this.label15.Location = new System.Drawing.Point(27, 226);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(68, 19);
             this.label15.TabIndex = 6;
@@ -757,7 +761,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(42, 156);
+            this.label16.Location = new System.Drawing.Point(55, 194);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(40, 19);
             this.label16.TabIndex = 5;
@@ -767,7 +771,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(14, 121);
+            this.label19.Location = new System.Drawing.Point(14, 159);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(84, 19);
             this.label19.TabIndex = 4;
@@ -777,11 +781,11 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(32, 82);
+            this.label20.Location = new System.Drawing.Point(19, 118);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(45, 19);
+            this.label20.Size = new System.Drawing.Size(79, 19);
             this.label20.TabIndex = 3;
-            this.label20.Text = "Class:";
+            this.label20.Text = "Class Num:";
             // 
             // label21
             // 
@@ -797,19 +801,19 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(29, 48);
+            this.label22.Location = new System.Drawing.Point(67, 48);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(53, 19);
+            this.label22.Size = new System.Drawing.Size(28, 19);
             this.label22.TabIndex = 1;
-            this.label22.Text = "Name: ";
+            this.label22.Text = "ID:";
             // 
-            // textBox14
+            // updateIdText
             // 
-            this.textBox14.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox14.Location = new System.Drawing.Point(141, 47);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(174, 20);
-            this.textBox14.TabIndex = 0;
+            this.updateIdText.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.updateIdText.Location = new System.Drawing.Point(141, 47);
+            this.updateIdText.Name = "updateIdText";
+            this.updateIdText.Size = new System.Drawing.Size(174, 20);
+            this.updateIdText.TabIndex = 0;
             // 
             // UploadExcelPanel
             // 
@@ -898,6 +902,24 @@
             this.label24.Size = new System.Drawing.Size(79, 19);
             this.label24.TabIndex = 13;
             this.label24.Text = "Class Num:";
+            // 
+            // updatePrefixText
+            // 
+            this.updatePrefixText.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.updatePrefixText.Location = new System.Drawing.Point(141, 83);
+            this.updatePrefixText.Name = "updatePrefixText";
+            this.updatePrefixText.Size = new System.Drawing.Size(174, 20);
+            this.updatePrefixText.TabIndex = 12;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(14, 84);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(84, 19);
+            this.label25.TabIndex = 11;
+            this.label25.Text = "Class Prefix:";
             // 
             // HomePageForm
             // 
@@ -991,17 +1013,17 @@
         private System.Windows.Forms.Panel ChangeGradePanel;
         private System.Windows.Forms.Button CloseChangePanel;
         private System.Windows.Forms.Button EnterChangeButton;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.ComboBox updateSemesterText;
+        private System.Windows.Forms.TextBox updateNumText;
+        private System.Windows.Forms.TextBox updateYearText;
+        private System.Windows.Forms.TextBox updateGradeText;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox updateIdText;
         private System.Windows.Forms.Panel UploadExcelPanel;
         private System.Windows.Forms.Button CancelExcelButton;
         private System.Windows.Forms.Button button2;
@@ -1010,6 +1032,8 @@
         private System.Windows.Forms.TextBox addIdText;
         private System.Windows.Forms.TextBox addNumText;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox updatePrefixText;
+        private System.Windows.Forms.Label label25;
     }
 }
 

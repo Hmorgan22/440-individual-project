@@ -38,7 +38,7 @@ namespace CSC440_GroupProject
 
         private void EnterNewGradeButton_Click(object sender, EventArgs e)
         {
-            //Method to add a student to the database
+            //Method to add a student to the database.
             try
             {
                 string connectionString = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
