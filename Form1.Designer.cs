@@ -33,17 +33,17 @@
             this.AddPanel = new System.Windows.Forms.Panel();
             this.CloseAddFormButton = new System.Windows.Forms.Button();
             this.EnterNewGradeButton = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.addSemesterText = new System.Windows.Forms.ComboBox();
+            this.addPrefixText = new System.Windows.Forms.TextBox();
+            this.addYearText = new System.Windows.Forms.TextBox();
+            this.addGradeText = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.Class = new System.Windows.Forms.Label();
+            this.Prefix = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.studentNameBox = new System.Windows.Forms.TextBox();
+            this.addNameText = new System.Windows.Forms.TextBox();
             this.DeletePanel = new System.Windows.Forms.Panel();
             this.CancelDeleteButton = new System.Windows.Forms.Button();
             this.DeleteStudentButton = new System.Windows.Forms.Button();
@@ -94,6 +94,10 @@
             this.CancelExcelButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label27 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.addIdText = new System.Windows.Forms.TextBox();
+            this.addNumText = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.AddPanel.SuspendLayout();
             this.DeletePanel.SuspendLayout();
             this.TranscriptPanel.SuspendLayout();
@@ -108,10 +112,9 @@
             this.label1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(24, 17);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(795, 73);
+            this.label1.Size = new System.Drawing.Size(395, 36);
             this.label1.TabIndex = 1;
             this.label1.Text = "Grade Management System";
             // 
@@ -121,10 +124,9 @@
             this.AddButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.AddButton.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.AddButton.Location = new System.Drawing.Point(24, 113);
-            this.AddButton.Margin = new System.Windows.Forms.Padding(6);
+            this.AddButton.Location = new System.Drawing.Point(12, 59);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(168, 83);
+            this.AddButton.Size = new System.Drawing.Size(84, 43);
             this.AddButton.TabIndex = 2;
             this.AddButton.Text = "Add Grade";
             this.AddButton.UseVisualStyleBackColor = false;
@@ -133,25 +135,29 @@
             // AddPanel
             // 
             this.AddPanel.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.AddPanel.Controls.Add(this.addNumText);
+            this.AddPanel.Controls.Add(this.label24);
+            this.AddPanel.Controls.Add(this.label23);
+            this.AddPanel.Controls.Add(this.addIdText);
             this.AddPanel.Controls.Add(this.CloseAddFormButton);
             this.AddPanel.Controls.Add(this.EnterNewGradeButton);
-            this.AddPanel.Controls.Add(this.comboBox1);
-            this.AddPanel.Controls.Add(this.textBox3);
-            this.AddPanel.Controls.Add(this.textBox2);
-            this.AddPanel.Controls.Add(this.textBox1);
+            this.AddPanel.Controls.Add(this.addSemesterText);
+            this.AddPanel.Controls.Add(this.addPrefixText);
+            this.AddPanel.Controls.Add(this.addYearText);
+            this.AddPanel.Controls.Add(this.addGradeText);
             this.AddPanel.Controls.Add(this.label4);
             this.AddPanel.Controls.Add(this.label6);
             this.AddPanel.Controls.Add(this.label5);
-            this.AddPanel.Controls.Add(this.Class);
+            this.AddPanel.Controls.Add(this.Prefix);
             this.AddPanel.Controls.Add(this.label3);
             this.AddPanel.Controls.Add(this.label2);
-            this.AddPanel.Controls.Add(this.studentNameBox);
-            this.AddPanel.Location = new System.Drawing.Point(268, 113);
-            this.AddPanel.Margin = new System.Windows.Forms.Padding(6);
+            this.AddPanel.Controls.Add(this.addNameText);
+            this.AddPanel.Location = new System.Drawing.Point(530, 29);
             this.AddPanel.Name = "AddPanel";
-            this.AddPanel.Size = new System.Drawing.Size(928, 460);
+            this.AddPanel.Size = new System.Drawing.Size(464, 283);
             this.AddPanel.TabIndex = 5;
             this.AddPanel.Visible = false;
+            this.AddPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.AddPanel_Paint);
             // 
             // CloseAddFormButton
             // 
@@ -159,10 +165,9 @@
             this.CloseAddFormButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CloseAddFormButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseAddFormButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.CloseAddFormButton.Location = new System.Drawing.Point(730, 346);
-            this.CloseAddFormButton.Margin = new System.Windows.Forms.Padding(6);
+            this.CloseAddFormButton.Location = new System.Drawing.Point(369, 226);
             this.CloseAddFormButton.Name = "CloseAddFormButton";
-            this.CloseAddFormButton.Size = new System.Drawing.Size(168, 83);
+            this.CloseAddFormButton.Size = new System.Drawing.Size(84, 43);
             this.CloseAddFormButton.TabIndex = 10;
             this.CloseAddFormButton.Text = "Cancel";
             this.CloseAddFormButton.UseVisualStyleBackColor = false;
@@ -174,62 +179,56 @@
             this.EnterNewGradeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.EnterNewGradeButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EnterNewGradeButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.EnterNewGradeButton.Location = new System.Drawing.Point(730, 252);
-            this.EnterNewGradeButton.Margin = new System.Windows.Forms.Padding(6);
+            this.EnterNewGradeButton.Location = new System.Drawing.Point(369, 176);
             this.EnterNewGradeButton.Name = "EnterNewGradeButton";
-            this.EnterNewGradeButton.Size = new System.Drawing.Size(168, 83);
+            this.EnterNewGradeButton.Size = new System.Drawing.Size(84, 43);
             this.EnterNewGradeButton.TabIndex = 10;
             this.EnterNewGradeButton.Text = "Enter";
             this.EnterNewGradeButton.UseVisualStyleBackColor = false;
             this.EnterNewGradeButton.Click += new System.EventHandler(this.EnterNewGradeButton_Click);
             // 
-            // comboBox1
+            // addSemesterText
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.addSemesterText.FormattingEnabled = true;
+            this.addSemesterText.Items.AddRange(new object[] {
             "Spring",
             "Fall"});
-            this.comboBox1.Location = new System.Drawing.Point(282, 371);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(6);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(344, 33);
-            this.comboBox1.TabIndex = 10;
+            this.addSemesterText.Location = new System.Drawing.Point(141, 248);
+            this.addSemesterText.Name = "addSemesterText";
+            this.addSemesterText.Size = new System.Drawing.Size(174, 21);
+            this.addSemesterText.TabIndex = 10;
             // 
-            // textBox3
+            // addPrefixText
             // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox3.Location = new System.Drawing.Point(282, 156);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(344, 31);
-            this.textBox3.TabIndex = 9;
+            this.addPrefixText.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.addPrefixText.Location = new System.Drawing.Point(141, 104);
+            this.addPrefixText.Name = "addPrefixText";
+            this.addPrefixText.Size = new System.Drawing.Size(174, 20);
+            this.addPrefixText.TabIndex = 9;
             // 
-            // textBox2
+            // addYearText
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox2.Location = new System.Drawing.Point(282, 302);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(344, 31);
-            this.textBox2.TabIndex = 8;
+            this.addYearText.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.addYearText.Location = new System.Drawing.Point(141, 213);
+            this.addYearText.Name = "addYearText";
+            this.addYearText.Size = new System.Drawing.Size(174, 20);
+            this.addYearText.TabIndex = 8;
             // 
-            // textBox1
+            // addGradeText
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox1.Location = new System.Drawing.Point(282, 233);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(344, 31);
-            this.textBox1.TabIndex = 7;
+            this.addGradeText.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.addGradeText.Location = new System.Drawing.Point(141, 179);
+            this.addGradeText.Name = "addGradeText";
+            this.addGradeText.Size = new System.Drawing.Size(174, 20);
+            this.addGradeText.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(28, 377);
-            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label4.Location = new System.Drawing.Point(27, 250);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(138, 36);
+            this.label4.Size = new System.Drawing.Size(68, 19);
             this.label4.TabIndex = 6;
             this.label4.Text = "Semester:";
             // 
@@ -237,10 +236,9 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(84, 304);
-            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label6.Location = new System.Drawing.Point(55, 214);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 36);
+            this.label6.Size = new System.Drawing.Size(40, 19);
             this.label6.TabIndex = 5;
             this.label6.Text = "Year:";
             // 
@@ -248,32 +246,30 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(64, 235);
-            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label5.Location = new System.Drawing.Point(45, 178);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(102, 36);
+            this.label5.Size = new System.Drawing.Size(50, 19);
             this.label5.TabIndex = 4;
             this.label5.Text = "Grade:";
             // 
-            // Class
+            // Prefix
             // 
-            this.Class.AutoSize = true;
-            this.Class.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Class.Location = new System.Drawing.Point(64, 158);
-            this.Class.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.Class.Name = "Class";
-            this.Class.Size = new System.Drawing.Size(90, 36);
-            this.Class.TabIndex = 3;
-            this.Class.Text = "Class:";
+            this.Prefix.AutoSize = true;
+            this.Prefix.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Prefix.Location = new System.Drawing.Point(14, 103);
+            this.Prefix.Name = "Prefix";
+            this.Prefix.Size = new System.Drawing.Size(84, 19);
+            this.Prefix.TabIndex = 3;
+            this.Prefix.Text = "Class Prefix:";
+            this.Prefix.Click += new System.EventHandler(this.Class_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(152, 23);
-            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label3.Location = new System.Drawing.Point(76, 12);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(656, 36);
+            this.label3.Size = new System.Drawing.Size(320, 19);
             this.label3.TabIndex = 2;
             this.label3.Text = "Please Insert Required Data To Add Student Grade";
             // 
@@ -281,21 +277,19 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(58, 92);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Location = new System.Drawing.Point(48, 47);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 36);
+            this.label2.Size = new System.Drawing.Size(53, 19);
             this.label2.TabIndex = 1;
             this.label2.Text = "Name: ";
             // 
-            // studentNameBox
+            // addNameText
             // 
-            this.studentNameBox.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.studentNameBox.Location = new System.Drawing.Point(282, 90);
-            this.studentNameBox.Margin = new System.Windows.Forms.Padding(6);
-            this.studentNameBox.Name = "studentNameBox";
-            this.studentNameBox.Size = new System.Drawing.Size(344, 31);
-            this.studentNameBox.TabIndex = 0;
+            this.addNameText.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.addNameText.Location = new System.Drawing.Point(141, 47);
+            this.addNameText.Name = "addNameText";
+            this.addNameText.Size = new System.Drawing.Size(174, 20);
+            this.addNameText.TabIndex = 0;
             // 
             // DeletePanel
             // 
@@ -313,10 +307,9 @@
             this.DeletePanel.Controls.Add(this.label11);
             this.DeletePanel.Controls.Add(this.label12);
             this.DeletePanel.Controls.Add(this.textBox7);
-            this.DeletePanel.Location = new System.Drawing.Point(268, 113);
-            this.DeletePanel.Margin = new System.Windows.Forms.Padding(6);
+            this.DeletePanel.Location = new System.Drawing.Point(319, 361);
             this.DeletePanel.Name = "DeletePanel";
-            this.DeletePanel.Size = new System.Drawing.Size(928, 460);
+            this.DeletePanel.Size = new System.Drawing.Size(464, 239);
             this.DeletePanel.TabIndex = 11;
             this.DeletePanel.Visible = false;
             // 
@@ -326,10 +319,9 @@
             this.CancelDeleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CancelDeleteButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CancelDeleteButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.CancelDeleteButton.Location = new System.Drawing.Point(730, 346);
-            this.CancelDeleteButton.Margin = new System.Windows.Forms.Padding(6);
+            this.CancelDeleteButton.Location = new System.Drawing.Point(365, 180);
             this.CancelDeleteButton.Name = "CancelDeleteButton";
-            this.CancelDeleteButton.Size = new System.Drawing.Size(168, 83);
+            this.CancelDeleteButton.Size = new System.Drawing.Size(84, 43);
             this.CancelDeleteButton.TabIndex = 10;
             this.CancelDeleteButton.Text = "Cancel";
             this.CancelDeleteButton.UseVisualStyleBackColor = false;
@@ -341,10 +333,9 @@
             this.DeleteStudentButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.DeleteStudentButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteStudentButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.DeleteStudentButton.Location = new System.Drawing.Point(730, 252);
-            this.DeleteStudentButton.Margin = new System.Windows.Forms.Padding(6);
+            this.DeleteStudentButton.Location = new System.Drawing.Point(365, 131);
             this.DeleteStudentButton.Name = "DeleteStudentButton";
-            this.DeleteStudentButton.Size = new System.Drawing.Size(168, 83);
+            this.DeleteStudentButton.Size = new System.Drawing.Size(84, 43);
             this.DeleteStudentButton.TabIndex = 10;
             this.DeleteStudentButton.Text = "Enter";
             this.DeleteStudentButton.UseVisualStyleBackColor = false;
@@ -356,47 +347,42 @@
             this.comboBox2.Items.AddRange(new object[] {
             "Spring",
             "Fall"});
-            this.comboBox2.Location = new System.Drawing.Point(282, 371);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(6);
+            this.comboBox2.Location = new System.Drawing.Point(141, 193);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(344, 33);
+            this.comboBox2.Size = new System.Drawing.Size(174, 21);
             this.comboBox2.TabIndex = 10;
             // 
             // textBox4
             // 
             this.textBox4.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox4.Location = new System.Drawing.Point(282, 156);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(6);
+            this.textBox4.Location = new System.Drawing.Point(141, 81);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(344, 31);
+            this.textBox4.Size = new System.Drawing.Size(174, 20);
             this.textBox4.TabIndex = 9;
             // 
             // textBox5
             // 
             this.textBox5.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox5.Location = new System.Drawing.Point(282, 302);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(6);
+            this.textBox5.Location = new System.Drawing.Point(141, 157);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(344, 31);
+            this.textBox5.Size = new System.Drawing.Size(174, 20);
             this.textBox5.TabIndex = 8;
             // 
             // textBox6
             // 
             this.textBox6.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox6.Location = new System.Drawing.Point(282, 233);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(6);
+            this.textBox6.Location = new System.Drawing.Point(141, 121);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(344, 31);
+            this.textBox6.Size = new System.Drawing.Size(174, 20);
             this.textBox6.TabIndex = 7;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(28, 377);
-            this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label7.Location = new System.Drawing.Point(14, 196);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(138, 36);
+            this.label7.Size = new System.Drawing.Size(68, 19);
             this.label7.TabIndex = 6;
             this.label7.Text = "Semester:";
             // 
@@ -404,10 +390,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(84, 304);
-            this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label8.Location = new System.Drawing.Point(42, 158);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(83, 36);
+            this.label8.Size = new System.Drawing.Size(40, 19);
             this.label8.TabIndex = 5;
             this.label8.Text = "Year:";
             // 
@@ -415,10 +400,9 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(64, 235);
-            this.label9.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label9.Location = new System.Drawing.Point(32, 122);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(102, 36);
+            this.label9.Size = new System.Drawing.Size(50, 19);
             this.label9.TabIndex = 4;
             this.label9.Text = "Grade:";
             // 
@@ -426,10 +410,9 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(64, 158);
-            this.label10.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label10.Location = new System.Drawing.Point(32, 82);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(90, 36);
+            this.label10.Size = new System.Drawing.Size(45, 19);
             this.label10.TabIndex = 3;
             this.label10.Text = "Class:";
             // 
@@ -437,10 +420,9 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(152, 23);
-            this.label11.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label11.Location = new System.Drawing.Point(76, 12);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(687, 36);
+            this.label11.Size = new System.Drawing.Size(333, 19);
             this.label11.TabIndex = 2;
             this.label11.Text = "Please Insert Required Data To Delete Student Grade";
             // 
@@ -448,20 +430,18 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(58, 92);
-            this.label12.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label12.Location = new System.Drawing.Point(29, 48);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(106, 36);
+            this.label12.Size = new System.Drawing.Size(53, 19);
             this.label12.TabIndex = 1;
             this.label12.Text = "Name: ";
             // 
             // textBox7
             // 
             this.textBox7.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox7.Location = new System.Drawing.Point(282, 90);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(6);
+            this.textBox7.Location = new System.Drawing.Point(141, 47);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(344, 31);
+            this.textBox7.Size = new System.Drawing.Size(174, 20);
             this.textBox7.TabIndex = 0;
             // 
             // EditButton
@@ -470,10 +450,9 @@
             this.EditButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.EditButton.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EditButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.EditButton.Location = new System.Drawing.Point(24, 208);
-            this.EditButton.Margin = new System.Windows.Forms.Padding(6);
+            this.EditButton.Location = new System.Drawing.Point(12, 108);
             this.EditButton.Name = "EditButton";
-            this.EditButton.Size = new System.Drawing.Size(168, 83);
+            this.EditButton.Size = new System.Drawing.Size(84, 43);
             this.EditButton.TabIndex = 6;
             this.EditButton.Text = "Change Grade";
             this.EditButton.UseVisualStyleBackColor = false;
@@ -485,10 +464,9 @@
             this.DeleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.DeleteButton.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.DeleteButton.Location = new System.Drawing.Point(24, 302);
-            this.DeleteButton.Margin = new System.Windows.Forms.Padding(6);
+            this.DeleteButton.Location = new System.Drawing.Point(12, 157);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(168, 83);
+            this.DeleteButton.Size = new System.Drawing.Size(84, 43);
             this.DeleteButton.TabIndex = 7;
             this.DeleteButton.Text = "Delete Grade";
             this.DeleteButton.UseVisualStyleBackColor = false;
@@ -500,10 +478,9 @@
             this.UploadExcelButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.UploadExcelButton.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UploadExcelButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.UploadExcelButton.Location = new System.Drawing.Point(24, 396);
-            this.UploadExcelButton.Margin = new System.Windows.Forms.Padding(6);
+            this.UploadExcelButton.Location = new System.Drawing.Point(12, 206);
             this.UploadExcelButton.Name = "UploadExcelButton";
-            this.UploadExcelButton.Size = new System.Drawing.Size(168, 83);
+            this.UploadExcelButton.Size = new System.Drawing.Size(84, 43);
             this.UploadExcelButton.TabIndex = 8;
             this.UploadExcelButton.Text = "Upload Excel ";
             this.UploadExcelButton.UseVisualStyleBackColor = false;
@@ -515,10 +492,9 @@
             this.CloseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CloseButton.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.CloseButton.Location = new System.Drawing.Point(24, 585);
-            this.CloseButton.Margin = new System.Windows.Forms.Padding(6);
+            this.CloseButton.Location = new System.Drawing.Point(12, 304);
             this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(168, 83);
+            this.CloseButton.Size = new System.Drawing.Size(84, 43);
             this.CloseButton.TabIndex = 9;
             this.CloseButton.Text = "Close";
             this.CloseButton.UseVisualStyleBackColor = false;
@@ -530,10 +506,9 @@
             this.PrintTranscriptButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PrintTranscriptButton.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PrintTranscriptButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.PrintTranscriptButton.Location = new System.Drawing.Point(24, 490);
-            this.PrintTranscriptButton.Margin = new System.Windows.Forms.Padding(6);
+            this.PrintTranscriptButton.Location = new System.Drawing.Point(12, 255);
             this.PrintTranscriptButton.Name = "PrintTranscriptButton";
-            this.PrintTranscriptButton.Size = new System.Drawing.Size(168, 83);
+            this.PrintTranscriptButton.Size = new System.Drawing.Size(84, 43);
             this.PrintTranscriptButton.TabIndex = 10;
             this.PrintTranscriptButton.Text = "Print Transcript";
             this.PrintTranscriptButton.UseVisualStyleBackColor = false;
@@ -549,10 +524,9 @@
             this.TranscriptPanel.Controls.Add(this.CloseTranscriptButton);
             this.TranscriptPanel.Controls.Add(this.label17);
             this.TranscriptPanel.Controls.Add(this.textBox11);
-            this.TranscriptPanel.Location = new System.Drawing.Point(268, 113);
-            this.TranscriptPanel.Margin = new System.Windows.Forms.Padding(6);
+            this.TranscriptPanel.Location = new System.Drawing.Point(217, 395);
             this.TranscriptPanel.Name = "TranscriptPanel";
-            this.TranscriptPanel.Size = new System.Drawing.Size(928, 460);
+            this.TranscriptPanel.Size = new System.Drawing.Size(464, 239);
             this.TranscriptPanel.TabIndex = 12;
             this.TranscriptPanel.Visible = false;
             // 
@@ -560,10 +534,9 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(362, 158);
-            this.label13.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label13.Location = new System.Drawing.Point(181, 82);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(204, 36);
+            this.label13.Size = new System.Drawing.Size(103, 19);
             this.label13.TabIndex = 14;
             this.label13.Text = "Classes/Grades";
             // 
@@ -571,30 +544,27 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(166, 96);
-            this.label18.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label18.Location = new System.Drawing.Point(83, 50);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(84, 36);
+            this.label18.Size = new System.Drawing.Size(42, 19);
             this.label18.TabIndex = 13;
             this.label18.Text = "GPA:";
             // 
             // listView1
             // 
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(282, 206);
-            this.listView1.Margin = new System.Windows.Forms.Padding(6);
+            this.listView1.Location = new System.Drawing.Point(141, 107);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(344, 202);
+            this.listView1.Size = new System.Drawing.Size(174, 107);
             this.listView1.TabIndex = 12;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // textBox12
             // 
             this.textBox12.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox12.Location = new System.Drawing.Point(282, 94);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(6);
+            this.textBox12.Location = new System.Drawing.Point(141, 49);
             this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(344, 31);
+            this.textBox12.Size = new System.Drawing.Size(174, 20);
             this.textBox12.TabIndex = 11;
             // 
             // CloseTranscriptButton
@@ -603,10 +573,9 @@
             this.CloseTranscriptButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CloseTranscriptButton.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseTranscriptButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.CloseTranscriptButton.Location = new System.Drawing.Point(730, 346);
-            this.CloseTranscriptButton.Margin = new System.Windows.Forms.Padding(6);
+            this.CloseTranscriptButton.Location = new System.Drawing.Point(365, 180);
             this.CloseTranscriptButton.Name = "CloseTranscriptButton";
-            this.CloseTranscriptButton.Size = new System.Drawing.Size(168, 83);
+            this.CloseTranscriptButton.Size = new System.Drawing.Size(84, 43);
             this.CloseTranscriptButton.TabIndex = 10;
             this.CloseTranscriptButton.Text = "Return Home";
             this.CloseTranscriptButton.UseVisualStyleBackColor = false;
@@ -616,20 +585,18 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(152, 25);
-            this.label17.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label17.Location = new System.Drawing.Point(76, 13);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(98, 36);
+            this.label17.Size = new System.Drawing.Size(49, 19);
             this.label17.TabIndex = 2;
             this.label17.Text = "Name:";
             // 
             // textBox11
             // 
             this.textBox11.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox11.Location = new System.Drawing.Point(282, 23);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(6);
+            this.textBox11.Location = new System.Drawing.Point(141, 12);
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(344, 31);
+            this.textBox11.Size = new System.Drawing.Size(174, 20);
             this.textBox11.TabIndex = 0;
             // 
             // TranscriptSearchPanel
@@ -639,10 +606,9 @@
             this.TranscriptSearchPanel.Controls.Add(this.SearchForTranscriptButton);
             this.TranscriptSearchPanel.Controls.Add(this.textBox8);
             this.TranscriptSearchPanel.Controls.Add(this.label14);
-            this.TranscriptSearchPanel.Location = new System.Drawing.Point(400, 192);
-            this.TranscriptSearchPanel.Margin = new System.Windows.Forms.Padding(6);
+            this.TranscriptSearchPanel.Location = new System.Drawing.Point(200, 100);
             this.TranscriptSearchPanel.Name = "TranscriptSearchPanel";
-            this.TranscriptSearchPanel.Size = new System.Drawing.Size(626, 188);
+            this.TranscriptSearchPanel.Size = new System.Drawing.Size(313, 98);
             this.TranscriptSearchPanel.TabIndex = 11;
             this.TranscriptSearchPanel.Visible = false;
             // 
@@ -652,10 +618,9 @@
             this.CancelTranscriptSearchButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CancelTranscriptSearchButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CancelTranscriptSearchButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.CancelTranscriptSearchButton.Location = new System.Drawing.Point(482, 123);
-            this.CancelTranscriptSearchButton.Margin = new System.Windows.Forms.Padding(6);
+            this.CancelTranscriptSearchButton.Location = new System.Drawing.Point(241, 64);
             this.CancelTranscriptSearchButton.Name = "CancelTranscriptSearchButton";
-            this.CancelTranscriptSearchButton.Size = new System.Drawing.Size(138, 52);
+            this.CancelTranscriptSearchButton.Size = new System.Drawing.Size(69, 27);
             this.CancelTranscriptSearchButton.TabIndex = 12;
             this.CancelTranscriptSearchButton.Text = "Cancel";
             this.CancelTranscriptSearchButton.UseVisualStyleBackColor = false;
@@ -667,10 +632,9 @@
             this.SearchForTranscriptButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.SearchForTranscriptButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchForTranscriptButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.SearchForTranscriptButton.Location = new System.Drawing.Point(478, 33);
-            this.SearchForTranscriptButton.Margin = new System.Windows.Forms.Padding(6);
+            this.SearchForTranscriptButton.Location = new System.Drawing.Point(239, 17);
             this.SearchForTranscriptButton.Name = "SearchForTranscriptButton";
-            this.SearchForTranscriptButton.Size = new System.Drawing.Size(142, 54);
+            this.SearchForTranscriptButton.Size = new System.Drawing.Size(71, 28);
             this.SearchForTranscriptButton.TabIndex = 12;
             this.SearchForTranscriptButton.Text = "Enter";
             this.SearchForTranscriptButton.UseVisualStyleBackColor = false;
@@ -679,20 +643,18 @@
             // textBox8
             // 
             this.textBox8.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox8.Location = new System.Drawing.Point(38, 85);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(6);
+            this.textBox8.Location = new System.Drawing.Point(19, 44);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(344, 31);
+            this.textBox8.Size = new System.Drawing.Size(174, 20);
             this.textBox8.TabIndex = 8;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(70, 29);
-            this.label14.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label14.Location = new System.Drawing.Point(35, 15);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(270, 36);
+            this.label14.Size = new System.Drawing.Size(132, 19);
             this.label14.TabIndex = 4;
             this.label14.Text = "Enter Student Name";
             // 
@@ -712,10 +674,9 @@
             this.ChangeGradePanel.Controls.Add(this.label21);
             this.ChangeGradePanel.Controls.Add(this.label22);
             this.ChangeGradePanel.Controls.Add(this.textBox14);
-            this.ChangeGradePanel.Location = new System.Drawing.Point(266, 115);
-            this.ChangeGradePanel.Margin = new System.Windows.Forms.Padding(6);
+            this.ChangeGradePanel.Location = new System.Drawing.Point(668, 318);
             this.ChangeGradePanel.Name = "ChangeGradePanel";
-            this.ChangeGradePanel.Size = new System.Drawing.Size(928, 460);
+            this.ChangeGradePanel.Size = new System.Drawing.Size(464, 239);
             this.ChangeGradePanel.TabIndex = 12;
             this.ChangeGradePanel.Visible = false;
             // 
@@ -725,10 +686,9 @@
             this.CloseChangePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CloseChangePanel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseChangePanel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.CloseChangePanel.Location = new System.Drawing.Point(730, 346);
-            this.CloseChangePanel.Margin = new System.Windows.Forms.Padding(6);
+            this.CloseChangePanel.Location = new System.Drawing.Point(365, 180);
             this.CloseChangePanel.Name = "CloseChangePanel";
-            this.CloseChangePanel.Size = new System.Drawing.Size(168, 83);
+            this.CloseChangePanel.Size = new System.Drawing.Size(84, 43);
             this.CloseChangePanel.TabIndex = 10;
             this.CloseChangePanel.Text = "Cancel";
             this.CloseChangePanel.UseVisualStyleBackColor = false;
@@ -740,10 +700,9 @@
             this.EnterChangeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.EnterChangeButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EnterChangeButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.EnterChangeButton.Location = new System.Drawing.Point(730, 252);
-            this.EnterChangeButton.Margin = new System.Windows.Forms.Padding(6);
+            this.EnterChangeButton.Location = new System.Drawing.Point(365, 131);
             this.EnterChangeButton.Name = "EnterChangeButton";
-            this.EnterChangeButton.Size = new System.Drawing.Size(168, 83);
+            this.EnterChangeButton.Size = new System.Drawing.Size(84, 43);
             this.EnterChangeButton.TabIndex = 10;
             this.EnterChangeButton.Text = "Enter";
             this.EnterChangeButton.UseVisualStyleBackColor = false;
@@ -755,47 +714,42 @@
             this.comboBox3.Items.AddRange(new object[] {
             "Spring",
             "Fall"});
-            this.comboBox3.Location = new System.Drawing.Point(282, 371);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(6);
+            this.comboBox3.Location = new System.Drawing.Point(141, 193);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(344, 33);
+            this.comboBox3.Size = new System.Drawing.Size(174, 21);
             this.comboBox3.TabIndex = 10;
             // 
             // textBox9
             // 
             this.textBox9.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox9.Location = new System.Drawing.Point(282, 156);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(6);
+            this.textBox9.Location = new System.Drawing.Point(141, 81);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(344, 31);
+            this.textBox9.Size = new System.Drawing.Size(174, 20);
             this.textBox9.TabIndex = 9;
             // 
             // textBox10
             // 
             this.textBox10.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox10.Location = new System.Drawing.Point(282, 302);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(6);
+            this.textBox10.Location = new System.Drawing.Point(141, 157);
             this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(344, 31);
+            this.textBox10.Size = new System.Drawing.Size(174, 20);
             this.textBox10.TabIndex = 8;
             // 
             // textBox13
             // 
             this.textBox13.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox13.Location = new System.Drawing.Point(282, 233);
-            this.textBox13.Margin = new System.Windows.Forms.Padding(6);
+            this.textBox13.Location = new System.Drawing.Point(141, 121);
             this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(344, 31);
+            this.textBox13.Size = new System.Drawing.Size(174, 20);
             this.textBox13.TabIndex = 7;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(28, 377);
-            this.label15.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label15.Location = new System.Drawing.Point(14, 196);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(138, 36);
+            this.label15.Size = new System.Drawing.Size(68, 19);
             this.label15.TabIndex = 6;
             this.label15.Text = "Semester:";
             // 
@@ -803,10 +757,9 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(84, 300);
-            this.label16.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label16.Location = new System.Drawing.Point(42, 156);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(83, 36);
+            this.label16.Size = new System.Drawing.Size(40, 19);
             this.label16.TabIndex = 5;
             this.label16.Text = "Year:";
             // 
@@ -814,10 +767,9 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(28, 233);
-            this.label19.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label19.Location = new System.Drawing.Point(14, 121);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(170, 36);
+            this.label19.Size = new System.Drawing.Size(84, 19);
             this.label19.TabIndex = 4;
             this.label19.Text = "New Grade:";
             // 
@@ -825,10 +777,9 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(64, 158);
-            this.label20.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label20.Location = new System.Drawing.Point(32, 82);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(90, 36);
+            this.label20.Size = new System.Drawing.Size(45, 19);
             this.label20.TabIndex = 3;
             this.label20.Text = "Class:";
             // 
@@ -836,10 +787,9 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(152, 23);
-            this.label21.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label21.Location = new System.Drawing.Point(76, 12);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(698, 36);
+            this.label21.Size = new System.Drawing.Size(340, 19);
             this.label21.TabIndex = 2;
             this.label21.Text = "Please Insert Required Data To Change Student Grade";
             // 
@@ -847,20 +797,18 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(58, 92);
-            this.label22.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label22.Location = new System.Drawing.Point(29, 48);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(106, 36);
+            this.label22.Size = new System.Drawing.Size(53, 19);
             this.label22.TabIndex = 1;
             this.label22.Text = "Name: ";
             // 
             // textBox14
             // 
             this.textBox14.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox14.Location = new System.Drawing.Point(282, 90);
-            this.textBox14.Margin = new System.Windows.Forms.Padding(6);
+            this.textBox14.Location = new System.Drawing.Point(141, 47);
             this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(344, 31);
+            this.textBox14.Size = new System.Drawing.Size(174, 20);
             this.textBox14.TabIndex = 0;
             // 
             // UploadExcelPanel
@@ -869,10 +817,9 @@
             this.UploadExcelPanel.Controls.Add(this.CancelExcelButton);
             this.UploadExcelPanel.Controls.Add(this.button2);
             this.UploadExcelPanel.Controls.Add(this.label27);
-            this.UploadExcelPanel.Location = new System.Drawing.Point(400, 192);
-            this.UploadExcelPanel.Margin = new System.Windows.Forms.Padding(6);
+            this.UploadExcelPanel.Location = new System.Drawing.Point(18, 376);
             this.UploadExcelPanel.Name = "UploadExcelPanel";
-            this.UploadExcelPanel.Size = new System.Drawing.Size(600, 385);
+            this.UploadExcelPanel.Size = new System.Drawing.Size(300, 200);
             this.UploadExcelPanel.TabIndex = 13;
             this.UploadExcelPanel.Visible = false;
             // 
@@ -882,10 +829,9 @@
             this.CancelExcelButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CancelExcelButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CancelExcelButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.CancelExcelButton.Location = new System.Drawing.Point(26, 265);
-            this.CancelExcelButton.Margin = new System.Windows.Forms.Padding(6);
+            this.CancelExcelButton.Location = new System.Drawing.Point(13, 138);
             this.CancelExcelButton.Name = "CancelExcelButton";
-            this.CancelExcelButton.Size = new System.Drawing.Size(168, 83);
+            this.CancelExcelButton.Size = new System.Drawing.Size(84, 43);
             this.CancelExcelButton.TabIndex = 10;
             this.CancelExcelButton.Text = "Cancel";
             this.CancelExcelButton.UseVisualStyleBackColor = false;
@@ -897,10 +843,9 @@
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button2.Location = new System.Drawing.Point(418, 265);
-            this.button2.Margin = new System.Windows.Forms.Padding(6);
+            this.button2.Location = new System.Drawing.Point(209, 138);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(168, 83);
+            this.button2.Size = new System.Drawing.Size(84, 43);
             this.button2.TabIndex = 10;
             this.button2.Text = "Select";
             this.button2.UseVisualStyleBackColor = false;
@@ -910,20 +855,56 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(204, 132);
-            this.label27.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label27.Location = new System.Drawing.Point(102, 69);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(215, 36);
+            this.label27.Size = new System.Drawing.Size(105, 19);
             this.label27.TabIndex = 2;
             this.label27.Text = "Select a Folder ";
             this.label27.Click += new System.EventHandler(this.label27_Click);
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(67, 73);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(28, 19);
+            this.label23.TabIndex = 12;
+            this.label23.Text = "ID:";
+            this.label23.Click += new System.EventHandler(this.label23_Click_1);
+            // 
+            // addIdText
+            // 
+            this.addIdText.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.addIdText.Location = new System.Drawing.Point(141, 73);
+            this.addIdText.Name = "addIdText";
+            this.addIdText.Size = new System.Drawing.Size(174, 20);
+            this.addIdText.TabIndex = 11;
+            // 
+            // addNumText
+            // 
+            this.addNumText.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.addNumText.Location = new System.Drawing.Point(141, 140);
+            this.addNumText.Name = "addNumText";
+            this.addNumText.Size = new System.Drawing.Size(174, 20);
+            this.addNumText.TabIndex = 14;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(16, 139);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(79, 19);
+            this.label24.TabIndex = 13;
+            this.label24.Text = "Class Num:";
+            // 
             // HomePageForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(1344, 700);
+            this.ClientSize = new System.Drawing.Size(1068, 573);
             this.Controls.Add(this.UploadExcelPanel);
             this.Controls.Add(this.ChangeGradePanel);
             this.Controls.Add(this.TranscriptSearchPanel);
@@ -938,7 +919,6 @@
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "HomePageForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -970,14 +950,14 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label Class;
+        private System.Windows.Forms.Label Prefix;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox studentNameBox;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox addNameText;
+        private System.Windows.Forms.TextBox addPrefixText;
+        private System.Windows.Forms.TextBox addYearText;
+        private System.Windows.Forms.TextBox addGradeText;
+        private System.Windows.Forms.ComboBox addSemesterText;
         private System.Windows.Forms.Button CloseAddFormButton;
         private System.Windows.Forms.Button EnterNewGradeButton;
         private System.Windows.Forms.Panel DeletePanel;
@@ -1026,6 +1006,10 @@
         private System.Windows.Forms.Button CancelExcelButton;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox addIdText;
+        private System.Windows.Forms.TextBox addNumText;
+        private System.Windows.Forms.Label label24;
     }
 }
 

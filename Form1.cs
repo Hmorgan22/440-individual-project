@@ -38,9 +38,77 @@ namespace CSC440_GroupProject
 
         private void EnterNewGradeButton_Click(object sender, EventArgs e)
         {
-            //will eventually add an if condition after the data is in the database and is checked. 
-            MessageBox.Show("This record already exists!", "Add Record Error");
+            //Method to add a student to the database
+            try
+            {
+                string connectionString = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
 
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    //variables for inserting the student into tables
+                    string Name = addNameText.Text;
+                    string Id = addIdText.Text;
+                    string Grade = addGradeText.Text;
+                    string Prefix = addPrefixText.Text;
+                    string Number = addNumText.Text;
+                    string year = addYearText.Text;
+                    string semester = addSemesterText.Text;
+
+                    if (!StudentExists(connection, Name))
+                    {
+                        //Insert the name and ID  into the student table.
+                        string insertQuery = "INSERT INTO 440_hunter_student (Name, StudentId) VALUES (@Name, @Id)";
+                        using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@Name", Name);
+                            command.Parameters.AddWithValue("@Id", Id);
+                            command.ExecuteNonQuery();
+                        }
+
+                        //Insert the Id, prefix, course num, grade, year, semester into the database.
+                        string insertQueryGrades = "INSERT INTO 440_hunter_student_grades (StudentId, CoursePrefix, CourseNum, Grade, Year, Semester) VALUES (@Id, @Prefix, @Num, @Grade, @Year, @Semester)";
+                        using (MySqlCommand command = new MySqlCommand(insertQueryGrades, connection))
+                        {
+                            command.Parameters.AddWithValue("@Id", Id);
+                            command.Parameters.AddWithValue("@Prefix", Prefix);
+                            command.Parameters.AddWithValue("@Num", Number);
+                            command.Parameters.AddWithValue("@Grade", Grade);
+                            command.Parameters.AddWithValue("@Year", year);
+                            command.Parameters.AddWithValue("@Semester", semester);
+                            command.ExecuteNonQuery();
+                        }
+
+                        //Insert the prefix, course num, year, semester, hours into the database.
+                        string insertQueryHours = "INSERT INTO 440_hunter_course_credit_hours (CoursePrefix, CourseNum, Year, Semester) VALUES (@Prefix, @Num, @Year, @Semester)";
+                        using (MySqlCommand command = new MySqlCommand(insertQueryHours, connection))
+                        {
+                            command.Parameters.AddWithValue("@Prefix", Prefix);
+                            command.Parameters.AddWithValue("@Num", Number);
+                            command.Parameters.AddWithValue("@Year", year);
+                            command.Parameters.AddWithValue("@Semester", semester);
+                            command.ExecuteNonQuery();
+                        }
+                    }
+
+                    connection.Close();
+
+                    //reset add student screen
+                    MessageBox.Show("Student grade added succesffully.");
+                    addNameText.Text = "";
+                    addIdText.Text = "";
+                    addGradeText.Text= "";
+                    addPrefixText.Text = "";
+                    addNumText.Text = "";
+                    addYearText.Text = "";
+                    addSemesterText.Text = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unable to add student to the database.");
+            }
         }
 
         private void CancelDeleteButton_Click(object sender, EventArgs e)
@@ -204,7 +272,7 @@ namespace CSC440_GroupProject
                             }
                             catch (Exception ex)
                             {
-                                
+
                             }
                         }
 
@@ -232,7 +300,7 @@ namespace CSC440_GroupProject
                 return count > 0;
             }
 
-            return false; 
+            return false;
         }
 
         //method to get the folder path by using the file manager.
@@ -290,6 +358,26 @@ namespace CSC440_GroupProject
         }
 
         private void label27_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label23_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Class_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label23_Click_1(object sender, EventArgs e)
         {
 
         }
