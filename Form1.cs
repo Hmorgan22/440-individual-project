@@ -105,8 +105,6 @@ namespace CSC440_GroupProject
                         }
                     }
 
-
-
                     connection.Close();
 
                     //reset add student screen
