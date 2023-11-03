@@ -20,7 +20,6 @@ namespace CSC440_GroupProject
         public HomePageForm()
         {
             InitializeComponent();
-
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -188,7 +187,7 @@ namespace CSC440_GroupProject
                         deleteNumText.Text = "";
                         deleteYearText.Text = "";
                         deleteSemesterText.Text = "";
-                    } 
+                    }
                 }
             }
             catch (Exception ex)
@@ -450,7 +449,6 @@ namespace CSC440_GroupProject
             return selectedFolderPath;
         }
 
-
         private void SearchForTranscriptButton_Click(object sender, EventArgs e)
         {
             AddPanel.Visible = false;
@@ -473,9 +471,6 @@ namespace CSC440_GroupProject
                     //variable to save student ID
                     string Id = transcriptIdText.Text;
                     List<string> results = new List<string>();
-                    string studentName;
-                    string studentGpa;
-                
 
                     if (StudentExists(connection, Id))
                     {
