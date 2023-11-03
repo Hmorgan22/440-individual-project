@@ -87,6 +87,8 @@ namespace CSC440_GroupProject
                             command.Parameters.AddWithValue("@Semester", semester);
                             command.ExecuteNonQuery();
                         }
+
+                        CalculateGradePoints(Id);
                     }
 
                     if (!CourseExists(connection, Prefix, Number, year, semester))
@@ -102,6 +104,8 @@ namespace CSC440_GroupProject
                             command.ExecuteNonQuery();
                         }
                     }
+
+
 
                     connection.Close();
 
@@ -305,7 +309,6 @@ namespace CSC440_GroupProject
                                     }
                                 }
 
-
                                 try
                                 {
                                     if (!StudentExists(connection, excelId))
@@ -334,6 +337,8 @@ namespace CSC440_GroupProject
                                             command.Parameters.AddWithValue("@Semester", semester);
                                             command.ExecuteNonQuery();
                                         }
+
+                                        CalculateGradePoints(excelId);
                                     }
 
                                     if (!CourseExists(connection, coursePrefix, courseNumber, year, semester))
@@ -588,6 +593,8 @@ namespace CSC440_GroupProject
                             command.ExecuteNonQuery();
                         }
 
+                        CalculateGradePoints(Id);
+
                         connection.Close();
 
                         //reset update grade screen
@@ -725,6 +732,84 @@ namespace CSC440_GroupProject
 
             // Set the panel's location
             DeletePanel.Location = new Point(centerX, centerY);
+        }
+
+        static double CalculateGradePoints(string Id)
+        {
+            double gpa = 0;
+            double gpaTotal = 0;
+            //Method to calculate GPA
+            try
+            {
+                string connectionString = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
+
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    List<string> results = new List<string>();
+
+                    if (StudentExists(connection, Id))
+                    {
+                        //select student name and gpa from student table
+                        string selectStudentQuery = "SELECT Grade FROM 440_hunter_student_grades WHERE StudentId = @Id";
+                        using (MySqlCommand command = new MySqlCommand(selectStudentQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@Id", Id);
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    results.Add(reader["Grade"].ToString());
+                                }
+
+                                foreach (var grade in results)
+                                {
+                                    gpaTotal += getGpa(grade);
+                                }
+                            };
+                        }
+
+                        gpa = gpaTotal / results.Count();
+
+                        //Insert the GPA into the student table.
+                        string insertQuery = "UPDATE 440_hunter_student SET OverallGPA = @GPA WHERE StudentId = @Id";
+                        using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@GPA", gpa);
+                            command.Parameters.AddWithValue("@Id", Id);
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                    connection.Close();
+                    return gpa;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error calculating GPA.");
+                return gpa;
+            }
+
+        }
+
+        static double getGpa(string courseGrade)
+        {
+            switch (courseGrade)
+            {
+                case "A":
+                    return 4.0;
+                case "B":
+                    return 3.0;
+                case "C":
+                    return 2.0;
+                case "D":
+                    return 1.0;
+                case "F":
+                    return 0.0;
+                default:
+                    return 0.0;
+            }
         }
     }
 }
