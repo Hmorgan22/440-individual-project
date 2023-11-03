@@ -49,6 +49,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.addNameText = new System.Windows.Forms.TextBox();
             this.DeletePanel = new System.Windows.Forms.Panel();
+            this.deleteNumText = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.CancelDeleteButton = new System.Windows.Forms.Button();
             this.DeleteStudentButton = new System.Windows.Forms.Button();
             this.deleteSemesterText = new System.Windows.Forms.ComboBox();
@@ -66,13 +68,8 @@
             this.CloseButton = new System.Windows.Forms.Button();
             this.PrintTranscriptButton = new System.Windows.Forms.Button();
             this.TranscriptPanel = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.textBox12 = new System.Windows.Forms.TextBox();
             this.CloseTranscriptButton = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
             this.TranscriptSearchPanel = new System.Windows.Forms.Panel();
             this.CancelTranscriptSearchButton = new System.Windows.Forms.Button();
             this.SearchForTranscriptButton = new System.Windows.Forms.Button();
@@ -98,8 +95,15 @@
             this.CancelExcelButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label27 = new System.Windows.Forms.Label();
-            this.deleteNumText = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.outputIdText = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.outputNameText = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.outputGpaText = new System.Windows.Forms.TextBox();
+            this.outputTextBox = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             this.AddPanel.SuspendLayout();
             this.DeletePanel.SuspendLayout();
             this.TranscriptPanel.SuspendLayout();
@@ -346,11 +350,30 @@
             this.DeletePanel.Controls.Add(this.label11);
             this.DeletePanel.Controls.Add(this.label12);
             this.DeletePanel.Controls.Add(this.deleteIdText);
-            this.DeletePanel.Location = new System.Drawing.Point(468, 304);
+            this.DeletePanel.Location = new System.Drawing.Point(147, 219);
             this.DeletePanel.Name = "DeletePanel";
             this.DeletePanel.Size = new System.Drawing.Size(464, 253);
             this.DeletePanel.TabIndex = 11;
             this.DeletePanel.Visible = false;
+            this.DeletePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.DeletePanel_Paint);
+            // 
+            // deleteNumText
+            // 
+            this.deleteNumText.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.deleteNumText.Location = new System.Drawing.Point(141, 130);
+            this.deleteNumText.Name = "deleteNumText";
+            this.deleteNumText.Size = new System.Drawing.Size(174, 20);
+            this.deleteNumText.TabIndex = 12;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(32, 131);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(79, 19);
+            this.label26.TabIndex = 11;
+            this.label26.Text = "Class Num:";
             // 
             // CancelDeleteButton
             // 
@@ -540,55 +563,23 @@
             // TranscriptPanel
             // 
             this.TranscriptPanel.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.TranscriptPanel.Controls.Add(this.label13);
+            this.TranscriptPanel.Controls.Add(this.label29);
+            this.TranscriptPanel.Controls.Add(this.label28);
+            this.TranscriptPanel.Controls.Add(this.outputTextBox);
             this.TranscriptPanel.Controls.Add(this.label18);
-            this.TranscriptPanel.Controls.Add(this.listView1);
-            this.TranscriptPanel.Controls.Add(this.textBox12);
+            this.TranscriptPanel.Controls.Add(this.outputGpaText);
+            this.TranscriptPanel.Controls.Add(this.label13);
+            this.TranscriptPanel.Controls.Add(this.outputNameText);
+            this.TranscriptPanel.Controls.Add(this.label9);
             this.TranscriptPanel.Controls.Add(this.CloseTranscriptButton);
             this.TranscriptPanel.Controls.Add(this.label17);
-            this.TranscriptPanel.Controls.Add(this.textBox11);
-            this.TranscriptPanel.Location = new System.Drawing.Point(213, 18);
+            this.TranscriptPanel.Controls.Add(this.outputIdText);
+            this.TranscriptPanel.Location = new System.Drawing.Point(147, 298);
             this.TranscriptPanel.Name = "TranscriptPanel";
-            this.TranscriptPanel.Size = new System.Drawing.Size(464, 239);
+            this.TranscriptPanel.Size = new System.Drawing.Size(567, 245);
             this.TranscriptPanel.TabIndex = 12;
             this.TranscriptPanel.Visible = false;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(181, 82);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(103, 19);
-            this.label13.TabIndex = 14;
-            this.label13.Text = "Classes/Grades";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(83, 50);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(42, 19);
-            this.label18.TabIndex = 13;
-            this.label18.Text = "GPA:";
-            // 
-            // listView1
-            // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(141, 107);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(174, 107);
-            this.listView1.TabIndex = 12;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // textBox12
-            // 
-            this.textBox12.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox12.Location = new System.Drawing.Point(141, 49);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(174, 20);
-            this.textBox12.TabIndex = 11;
+            this.TranscriptPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.TranscriptPanel_Paint);
             // 
             // CloseTranscriptButton
             // 
@@ -596,7 +587,7 @@
             this.CloseTranscriptButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CloseTranscriptButton.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseTranscriptButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.CloseTranscriptButton.Location = new System.Drawing.Point(365, 180);
+            this.CloseTranscriptButton.Location = new System.Drawing.Point(474, 192);
             this.CloseTranscriptButton.Name = "CloseTranscriptButton";
             this.CloseTranscriptButton.Size = new System.Drawing.Size(84, 43);
             this.CloseTranscriptButton.TabIndex = 10;
@@ -608,19 +599,11 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(76, 13);
+            this.label17.Location = new System.Drawing.Point(16, 44);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(49, 19);
+            this.label17.Size = new System.Drawing.Size(28, 19);
             this.label17.TabIndex = 2;
-            this.label17.Text = "Name:";
-            // 
-            // textBox11
-            // 
-            this.textBox11.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox11.Location = new System.Drawing.Point(141, 12);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(174, 20);
-            this.textBox11.TabIndex = 0;
+            this.label17.Text = "ID:";
             // 
             // TranscriptSearchPanel
             // 
@@ -634,6 +617,7 @@
             this.TranscriptSearchPanel.Size = new System.Drawing.Size(313, 98);
             this.TranscriptSearchPanel.TabIndex = 11;
             this.TranscriptSearchPanel.Visible = false;
+            this.TranscriptSearchPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.TranscriptSearchPanel_Paint);
             // 
             // CancelTranscriptSearchButton
             // 
@@ -675,7 +659,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(35, 15);
+            this.label14.Location = new System.Drawing.Point(69, 12);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(111, 19);
             this.label14.TabIndex = 4;
@@ -700,11 +684,12 @@
             this.ChangeGradePanel.Controls.Add(this.label21);
             this.ChangeGradePanel.Controls.Add(this.label22);
             this.ChangeGradePanel.Controls.Add(this.updateIdText);
-            this.ChangeGradePanel.Location = new System.Drawing.Point(516, 24);
+            this.ChangeGradePanel.Location = new System.Drawing.Point(757, 322);
             this.ChangeGradePanel.Name = "ChangeGradePanel";
             this.ChangeGradePanel.Size = new System.Drawing.Size(464, 254);
             this.ChangeGradePanel.TabIndex = 12;
             this.ChangeGradePanel.Visible = false;
+            this.ChangeGradePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ChangeGradePanel_Paint);
             // 
             // updatePrefixText
             // 
@@ -861,12 +846,12 @@
             this.UploadExcelPanel.Controls.Add(this.CancelExcelButton);
             this.UploadExcelPanel.Controls.Add(this.button2);
             this.UploadExcelPanel.Controls.Add(this.label27);
-            this.UploadExcelPanel.Controls.Add(this.TranscriptPanel);
             this.UploadExcelPanel.Location = new System.Drawing.Point(18, 376);
             this.UploadExcelPanel.Name = "UploadExcelPanel";
             this.UploadExcelPanel.Size = new System.Drawing.Size(300, 200);
             this.UploadExcelPanel.TabIndex = 13;
             this.UploadExcelPanel.Visible = false;
+            this.UploadExcelPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.UploadExcelPanel_Paint);
             // 
             // CancelExcelButton
             // 
@@ -907,23 +892,89 @@
             this.label27.Text = "Select a Folder ";
             this.label27.Click += new System.EventHandler(this.label27_Click);
             // 
-            // deleteNumText
+            // label9
             // 
-            this.deleteNumText.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.deleteNumText.Location = new System.Drawing.Point(141, 130);
-            this.deleteNumText.Name = "deleteNumText";
-            this.deleteNumText.Size = new System.Drawing.Size(174, 20);
-            this.deleteNumText.TabIndex = 12;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(225, 17);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(119, 19);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Student Transcript";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
-            // label26
+            // outputIdText
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(32, 131);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(79, 19);
-            this.label26.TabIndex = 11;
-            this.label26.Text = "Class Num:";
+            this.outputIdText.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.outputIdText.Location = new System.Drawing.Point(58, 43);
+            this.outputIdText.Name = "outputIdText";
+            this.outputIdText.Size = new System.Drawing.Size(99, 20);
+            this.outputIdText.TabIndex = 0;
+            this.outputIdText.TextChanged += new System.EventHandler(this.textBox11_TextChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(184, 44);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(49, 19);
+            this.label13.TabIndex = 18;
+            this.label13.Text = "Name:";
+            // 
+            // outputNameText
+            // 
+            this.outputNameText.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.outputNameText.Location = new System.Drawing.Point(239, 45);
+            this.outputNameText.Name = "outputNameText";
+            this.outputNameText.Size = new System.Drawing.Size(149, 20);
+            this.outputNameText.TabIndex = 17;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(411, 46);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(42, 19);
+            this.label18.TabIndex = 20;
+            this.label18.Text = "GPA:";
+            // 
+            // outputGpaText
+            // 
+            this.outputGpaText.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.outputGpaText.Location = new System.Drawing.Point(461, 47);
+            this.outputGpaText.Name = "outputGpaText";
+            this.outputGpaText.Size = new System.Drawing.Size(97, 20);
+            this.outputGpaText.TabIndex = 19;
+            // 
+            // outputTextBox
+            // 
+            this.outputTextBox.Location = new System.Drawing.Point(14, 116);
+            this.outputTextBox.Multiline = true;
+            this.outputTextBox.Name = "outputTextBox";
+            this.outputTextBox.Size = new System.Drawing.Size(439, 119);
+            this.outputTextBox.TabIndex = 21;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(16, 94);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(53, 19);
+            this.label28.TabIndex = 22;
+            this.label28.Text = "Course";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(200, 94);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(47, 19);
+            this.label29.TabIndex = 23;
+            this.label29.Text = "Grade";
             // 
             // HomePageForm
             // 
@@ -934,6 +985,7 @@
             this.Controls.Add(this.UploadExcelPanel);
             this.Controls.Add(this.ChangeGradePanel);
             this.Controls.Add(this.TranscriptSearchPanel);
+            this.Controls.Add(this.TranscriptPanel);
             this.Controls.Add(this.DeletePanel);
             this.Controls.Add(this.PrintTranscriptButton);
             this.Controls.Add(this.CloseButton);
@@ -999,13 +1051,8 @@
         private System.Windows.Forms.TextBox deleteIdText;
         private System.Windows.Forms.Button PrintTranscriptButton;
         private System.Windows.Forms.Panel TranscriptPanel;
-        private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.Button CloseTranscriptButton;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Panel TranscriptSearchPanel;
         private System.Windows.Forms.Button CancelTranscriptSearchButton;
         private System.Windows.Forms.Button SearchForTranscriptButton;
@@ -1037,6 +1084,15 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TextBox deleteNumText;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox outputGpaText;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox outputNameText;
+        private System.Windows.Forms.TextBox outputIdText;
+        private System.Windows.Forms.TextBox outputTextBox;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
     }
 }
 

@@ -20,6 +20,7 @@ namespace CSC440_GroupProject
         public HomePageForm()
         {
             InitializeComponent();
+
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -30,6 +31,11 @@ namespace CSC440_GroupProject
         private void AddButton_Click(object sender, EventArgs e)
         {
             AddPanel.Visible = true;
+            DeletePanel.Visible = false;
+            ChangeGradePanel.Visible = false;
+            UploadExcelPanel.Visible = false;
+            TranscriptPanel.Visible = false;
+            TranscriptSearchPanel.Visible = false;
         }
         private void CloseAddFormButton_Click(object sender, EventArgs e)
         {
@@ -124,7 +130,12 @@ namespace CSC440_GroupProject
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
+            AddPanel.Visible = false;
             DeletePanel.Visible = true;
+            ChangeGradePanel.Visible = false;
+            UploadExcelPanel.Visible = false;
+            TranscriptPanel.Visible = false;
+            TranscriptSearchPanel.Visible = false;
         }
 
         private void DeleteStudentButton_Click(object sender, EventArgs e)
@@ -188,6 +199,11 @@ namespace CSC440_GroupProject
 
         private void PrintTranscriptButton_Click(object sender, EventArgs e)
         {
+            AddPanel.Visible = false;
+            DeletePanel.Visible = false;
+            ChangeGradePanel.Visible = false;
+            UploadExcelPanel.Visible = false;
+            TranscriptPanel.Visible = false;
             TranscriptSearchPanel.Visible = true;
         }
 
@@ -198,7 +214,12 @@ namespace CSC440_GroupProject
 
         private void UploadExcelButton_Click(object sender, EventArgs e)
         {
+            AddPanel.Visible = false;
+            DeletePanel.Visible = false;
+            ChangeGradePanel.Visible = false;
             UploadExcelPanel.Visible = true;
+            TranscriptPanel.Visible = false;
+            TranscriptSearchPanel.Visible = false;
         }
 
         //Method used to import student data from the excel files.
@@ -432,10 +453,89 @@ namespace CSC440_GroupProject
 
         private void SearchForTranscriptButton_Click(object sender, EventArgs e)
         {
+            AddPanel.Visible = false;
+            DeletePanel.Visible = false;
+            ChangeGradePanel.Visible = false;
+            UploadExcelPanel.Visible = false;
             TranscriptPanel.Visible = true;
             TranscriptSearchPanel.Visible = false;
+            outputTextBox.Clear();
 
             //Method for creating a students transcript
+            try
+            {
+                string connectionString = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
+
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    //variable to save student ID
+                    string Id = transcriptIdText.Text;
+                    List<string> results = new List<string>();
+                    string studentName;
+                    string studentGpa;
+                
+
+                    if (StudentExists(connection, Id))
+                    {
+                        //select student name and gpa from student table
+                        string selectStudentQuery = "SELECT * FROM 440_hunter_student WHERE StudentId = @Id";
+                        using (MySqlCommand command = new MySqlCommand(selectStudentQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@Id", Id);
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    string studentId = reader["StudentId"].ToString();
+                                    string Name = reader["Name"].ToString();
+                                    string Gpa = reader["OverallGPA"].ToString();
+                                    outputIdText.Text = studentId;
+                                    outputNameText.Text = Name;
+                                    outputGpaText.Text = Gpa;
+                                }
+                            };
+                        }
+
+                        //select grade information from student grade table
+                        string selectGradeQuery = "SELECT* FROM 440_hunter_student_grades WHERE StudentId = @Id";
+                        using (MySqlCommand command = new MySqlCommand(selectGradeQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@Id", Id);
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    string prefix = reader["CoursePrefix"].ToString();
+                                    string number = reader["CourseNum"].ToString();
+                                    string grade = reader["Grade"].ToString();
+                                    string year = reader["Year"].ToString();
+                                    string semester = reader["Semester"].ToString();
+                                    outputTextBox.AppendText(prefix);
+                                    outputTextBox.AppendText("\t" + number);
+                                    outputTextBox.AppendText("\t" + year);
+                                    outputTextBox.AppendText("\t" + semester);
+                                    outputTextBox.AppendText("\t" + grade);
+                                    outputTextBox.AppendText(Environment.NewLine);
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unable to find student in database.");
+                        transcriptIdText.Text = "";
+                    }
+
+                    connection.Close();
+                    transcriptIdText.Text = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unable to find student in the database.");
+            }
 
         }
 
@@ -446,7 +546,12 @@ namespace CSC440_GroupProject
 
         private void EditButton_Click(object sender, EventArgs e)
         {
+            AddPanel.Visible = false;
+            DeletePanel.Visible = false;
             ChangeGradePanel.Visible = true;
+            UploadExcelPanel.Visible = false;
+            TranscriptPanel.Visible = false;
+            TranscriptSearchPanel.Visible = false;
         }
 
         private void CloseChangePanel_Click(object sender, EventArgs e)
@@ -535,7 +640,11 @@ namespace CSC440_GroupProject
 
         private void AddPanel_Paint(object sender, PaintEventArgs e)
         {
+            int centerX = (this.ClientSize.Width - AddPanel.Width) / 2;
+            int centerY = (this.ClientSize.Height - AddPanel.Height) / 2;
 
+            // Set the panel's location
+            AddPanel.Location = new Point(centerX, centerY);
         }
 
         private void label23_Click(object sender, EventArgs e)
@@ -566,6 +675,61 @@ namespace CSC440_GroupProject
         private void label14_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox11_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TranscriptSearchPanel_Paint(object sender, PaintEventArgs e)
+        {
+            int centerX = (this.ClientSize.Width - TranscriptSearchPanel.Width) / 2;
+            int centerY = (this.ClientSize.Height - TranscriptSearchPanel.Height) / 2;
+
+            // Set the panel's location
+            TranscriptSearchPanel.Location = new Point(centerX, centerY);
+        }
+
+        private void UploadExcelPanel_Paint(object sender, PaintEventArgs e)
+        {
+            int centerX = (this.ClientSize.Width - UploadExcelPanel.Width) / 2;
+            int centerY = (this.ClientSize.Height - UploadExcelPanel.Height) / 2;
+
+            // Set the panel's location
+            UploadExcelPanel.Location = new Point(centerX, centerY);
+        }
+
+        private void ChangeGradePanel_Paint(object sender, PaintEventArgs e)
+        {
+            int centerX = (this.ClientSize.Width - ChangeGradePanel.Width) / 2;
+            int centerY = (this.ClientSize.Height - ChangeGradePanel.Height) / 2;
+
+            // Set the panel's location
+            ChangeGradePanel.Location = new Point(centerX, centerY);
+        }
+
+        private void TranscriptPanel_Paint(object sender, PaintEventArgs e)
+        {
+            int centerX = (this.ClientSize.Width - TranscriptPanel.Width) / 2;
+            int centerY = (this.ClientSize.Height - TranscriptPanel.Height) / 2;
+
+            // Set the panel's location
+            TranscriptPanel.Location = new Point(centerX, centerY);
+        }
+
+        private void DeletePanel_Paint(object sender, PaintEventArgs e)
+        {
+            int centerX = (this.ClientSize.Width - DeletePanel.Width) / 2;
+            int centerY = (this.ClientSize.Height - DeletePanel.Height) / 2;
+
+            // Set the panel's location
+            DeletePanel.Location = new Point(centerX, centerY);
         }
     }
 }
